@@ -1,0 +1,299 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MAE 5803 - Homework #1 Problem #1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-01-25"><meta name="DC.source" content="HW1P1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>MAE 5803 - Homework #1 Problem #1</h1><!--introduction--><p>Tim Coon: 25, January 2017</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Second-Order Nonlinear State Equation:</a></li><li><a href="#3">First-Order Nonlinear State Equations:</a></li><li><a href="#4">Draw the phase portrait</a></li><li><a href="#5">Plot the field of the phase portrait</a></li><li><a href="#6">a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).</a></li><li><a href="#7">First Singular Point</a></li><li><a href="#8">Second Singular Point</a></li><li><a href="#9">b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.</a></li><li><a href="#10">c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?</a></li><li><a href="#11">Linearized about the singular point at the origin</a></li><li><a href="#12">Linearized about the singular point at (-3, 0)</a></li></ul></div><pre class="codeinput">clear; close <span class="string">all</span>; clc;
+warning(<span class="string">'off'</span>,<span class="string">'MATLAB:ode45:IntegrationTolNotMet'</span>) <span class="comment">% suppress ode45 warnings</span>
+set(0,<span class="string">'defaulttextinterpreter'</span>,<span class="string">'latex'</span>)
+</pre><h2>Second-Order Nonlinear State Equation:<a name="2"></a></h2><p><img src="HW1P1_eq00748535024381780666.png" alt="$$ \ddot{\Theta}_{(t)} + 0.6 \dot{\Theta}_{(t)} + 3\Theta_{(t)} + \Theta^2_{(t)} = 0 $$"></p><h2>First-Order Nonlinear State Equations:<a name="3"></a></h2><p><img src="HW1P1_eq08159155655943494067.png" alt="$$ \dot{x}_1 = x_2 $$"></p><p><img src="HW1P1_eq04531298366012044755.png" alt="$$ \dot{x}_2 = -0.6x_2 - 3x_1 - x^2_1 $$"></p><h2>Draw the phase portrait<a name="4"></a></h2><p>Numerically integrate the state equation using ode45 starting at various points in the plane. The Plus (+) marks indicate starting points for each simulated trajectory.</p><pre class="codeinput">tspan = [0 2];
+figure();
+hold <span class="string">on</span>
+<span class="keyword">for</span> i = -5:1:5
+    <span class="keyword">for</span> j = -5:1:5
+        T0 = [i; j];
+        options = odeset(<span class="string">'RelTol'</span>,1e-4,<span class="string">'AbsTol'</span>,1e-7);
+        [t,T] = ode45(@P1stateEqn,tspan,T0,[],1);
+        h = plot(T(:,1),T(:,2));
+        c = get(h,<span class="string">'color'</span>);
+        plot(T0(1),T0(2),<span class="string">'+'</span>,<span class="string">'color'</span>,c);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+axis([-5 5 -5 5])
+axis <span class="string">equal</span>
+xlabel(<span class="string">'$\Theta$'</span>)
+ylabel(<span class="string">'$\dot{\Theta}$'</span>)
+title(<span class="string">'Nonlinear system phase portrait'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="HW1P1_01.png" alt=""> <h2>Plot the field of the phase portrait<a name="5"></a></h2><pre class="codeinput">[x1, x2] = meshgrid(-4:0.5:4, -4:0.5:4);
+x1dot = x2;
+x2dot = -0.6*x2 - 3.*x1 - x1.^2;
+figure()
+quiver(x1,x2,x1dot,x2dot,<span class="string">'AutoScaleFactor'</span>,5)
+axis([-5 5 -5 5])
+axis <span class="string">equal</span>
+xlabel(<span class="string">'$\Theta$'</span>)
+ylabel(<span class="string">'$\dot{\Theta}$'</span>)
+title(<span class="string">'Phase portrait with gradients'</span>)
+</pre><img vspace="5" hspace="5" src="HW1P1_02.png" alt=""> <h2>a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).<a name="6"></a></h2><p>Reference Slotine, Section 2.5 There are two singular points.</p><h2>First Singular Point<a name="7"></a></h2><p>The first singular point is a stable focus at the origin. Use the Jacobian to linearize about the origin. Both eigenvalues have negative real parts, supporting the ID as a stable focus.</p><p><img src="HW1P1_eq02247956568656626036.png" alt="$$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=\bar{0}} $$"></p><p><img src="HW1P1_eq09051619144644011309.png" alt="$$ \frac{\partial{f_1}}{\partial{x_1}} = 0        \quad&#xA;   \frac{\partial{f_1}}{\partial{x_2}} = 1        \quad&#xA;   \frac{\partial{f_2}}{\partial{x_1}} = 3 - 2x_1 \quad&#xA;   \frac{\partial{f_2}}{\partial{x_2}} = -0.6     $$"></p><p><img src="HW1P1_eq17583039187716891276.png" alt="$$ A = \pmatrix{0&amp;1\cr&#xA;                -3&amp;-0.6\cr}$$"></p><pre class="codeinput">A1 = [0 1; -3 -0.6];
+eValue1 = eig(A1)
+</pre><pre class="codeoutput">
+eValue1 =
+
+  -0.3000 + 1.7059i
+  -0.3000 - 1.7059i
+
+</pre><h2>Second Singular Point<a name="8"></a></h2><p>The second sigular point is a saddle point at (-3,0). Use the Jacobian to linearize about this point. One eigenvalue is positive and the other negative with no imaginary parts, supporting the ID as a saddle point.</p><p><img src="HW1P1_eq13420966220003024598.png" alt="$$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(-3,0)} $$"></p><p><img src="HW1P1_eq02747607414686106322.png" alt="$$ \frac{\partial{f_1}}{\partial{x_1}} = 0         \quad&#xA;   \frac{\partial{f_1}}{\partial{x_2}} = 1         \quad&#xA;   \frac{\partial{f_2}}{\partial{x_1}} = -3 - 2x_1 \quad&#xA;   \frac{\partial{f_2}}{\partial{x_2}} = -0.6      $$"></p><p><img src="HW1P1_eq02881572758737217240.png" alt="$$ A = \pmatrix{0&amp;1\cr&#xA;                3&amp;-0.6\cr}$$"></p><pre class="codeinput">A2 = [0 1; 3 -0.6];
+eValue2 = eig(A2)
+</pre><pre class="codeoutput">
+eValue2 =
+
+    1.4578
+   -2.0578
+
+</pre><h2>b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.<a name="9"></a></h2><p>See part a)</p><h2>c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?<a name="10"></a></h2><p>Plot the same as nonlinear, but use linear equations in function file.</p><h2>Linearized about the singular point at the origin<a name="11"></a></h2><p>The phase portrait of the linearized system looks very similar to that of the nonlinear system near the <img src="HW1P1_eq12685105922891341491.png" alt="$\Theta$">-axis where the effects of the squared term are inconsequential. The linearized system is always stable, with trajectories tending toward the origin.</p><pre class="codeinput">tspan = [0 2];
+figure();
+hold <span class="string">on</span>
+<span class="keyword">for</span> i = -4:1:4
+    <span class="keyword">for</span> j = -4:1:4
+        T0 = [i; j];
+        [t,T] = ode45(@P1stateEqn,tspan,T0,[],2);
+        h = plot(T(:,1),T(:,2));
+        c = get(h,<span class="string">'color'</span>);
+        plot(T0(1),T0(2),<span class="string">'+'</span>,<span class="string">'color'</span>,c);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+axis([-5 5 -5 5])
+axis <span class="string">equal</span>
+xlabel(<span class="string">'$\Theta$'</span>)
+ylabel(<span class="string">'$\dot{\Theta}$'</span>)
+title(<span class="string">'Linearized about the origin'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="HW1P1_03.png" alt=""> <h2>Linearized about the singular point at (-3, 0)<a name="12"></a></h2><p>The phase portrait of the linzearized system looks very similar to that of the nonlinear system near <img src="HW1P1_eq08343455380384741759.png" alt="$\bar{x}=(-3,0)$"> where the squared term is canceled by the <img src="HW1P1_eq06613056106014670631.png" alt="$x_1$"> term preceding it in the nonlinear first-order system.</p><pre class="codeinput">tspan = [0 2];
+figure();
+hold <span class="string">on</span>
+<span class="keyword">for</span> i = -6:1:2
+    <span class="keyword">for</span> j = -4:1:4
+        T0 = [i; j];
+        [t,T] = ode45(@P1stateEqn,tspan,T0,[],3);
+        h = plot(T(:,1),T(:,2));
+        c = get(h,<span class="string">'color'</span>);
+        plot(T0(1),T0(2),<span class="string">'+'</span>,<span class="string">'color'</span>,c);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+axis([-5 1 -5 5])
+axis <span class="string">equal</span>
+xlabel(<span class="string">'$\Theta$'</span>)
+ylabel(<span class="string">'$\dot{\Theta}$'</span>)
+title(<span class="string">'Linearized about (-3,0)'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="HW1P1_04.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MAE 5803 - Homework #1 Problem #1
+% Tim Coon: 25, January 2017
+%%
+clear; close all; clc;
+warning('off','MATLAB:ode45:IntegrationTolNotMet') % suppress ode45 warnings
+set(0,'defaulttextinterpreter','latex') 
+%% Second-Order Nonlinear State Equation:
+% $$ \ddot{\Theta}_{(t)} + 0.6 \dot{\Theta}_{(t)} + 3\Theta_{(t)} + \Theta^2_{(t)} = 0 $$
+%% First-Order Nonlinear State Equations:
+% $$ \dot{x}_1 = x_2 $$
+%
+% $$ \dot{x}_2 = -0.6x_2 - 3x_1 - x^2_1 $$
+%
+%% Draw the phase portrait
+% Numerically integrate the state equation using ode45 starting at various
+% points in the plane. The Plus (+) marks indicate starting points for each
+% simulated trajectory.
+tspan = [0 2];
+figure();
+hold on
+for i = -5:1:5
+    for j = -5:1:5
+        T0 = [i; j];
+        options = odeset('RelTol',1e-4,'AbsTol',1e-7);
+        [t,T] = ode45(@P1stateEqn,tspan,T0,[],1);
+        h = plot(T(:,1),T(:,2));
+        c = get(h,'color');
+        plot(T0(1),T0(2),'+','color',c);
+    end
+end
+axis([-5 5 -5 5])
+axis equal
+xlabel('$\Theta$')
+ylabel('$\dot{\Theta}$')
+title('Nonlinear system phase portrait')
+hold off
+
+%% Plot the field of the phase portrait
+[x1, x2] = meshgrid(-4:0.5:4, -4:0.5:4);
+x1dot = x2;
+x2dot = -0.6*x2 - 3.*x1 - x1.^2;
+figure()
+quiver(x1,x2,x1dot,x2dot,'AutoScaleFactor',5)
+axis([-5 5 -5 5])
+axis equal
+xlabel('$\Theta$')
+ylabel('$\dot{\Theta}$')
+title('Phase portrait with gradients')
+
+%% a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).
+% Reference Slotine, Section 2.5
+% There are two singular points.
+%% First Singular Point
+% The first singular point is a stable focus at the origin. Use the
+% Jacobian to linearize about the origin. Both eigenvalues have negative
+% real parts, supporting the ID as a stable focus.
+%
+% $$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=\bar{0}} $$
+%
+% $$ \frac{\partial{f_1}}{\partial{x_1}} = 0        \quad
+%    \frac{\partial{f_1}}{\partial{x_2}} = 1        \quad
+%    \frac{\partial{f_2}}{\partial{x_1}} = 3 - 2x_1 \quad
+%    \frac{\partial{f_2}}{\partial{x_2}} = -0.6     $$
+%
+% $$ A = \pmatrix{0&1\cr
+%                 -3&-0.6\cr}$$
+A1 = [0 1; -3 -0.6];
+eValue1 = eig(A1)
+
+%% Second Singular Point
+% The second sigular point is a saddle point at (-3,0). Use the Jacobian to
+% linearize about this point. One eigenvalue is positive and the other 
+% negative with no imaginary parts, supporting the ID as a saddle point.
+%
+% $$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(-3,0)} $$
+%
+% $$ \frac{\partial{f_1}}{\partial{x_1}} = 0         \quad
+%    \frac{\partial{f_1}}{\partial{x_2}} = 1         \quad
+%    \frac{\partial{f_2}}{\partial{x_1}} = -3 - 2x_1 \quad
+%    \frac{\partial{f_2}}{\partial{x_2}} = -0.6      $$
+%
+% $$ A = \pmatrix{0&1\cr
+%                 3&-0.6\cr}$$
+A2 = [0 1; 3 -0.6];
+eValue2 = eig(A2)
+
+%% b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.
+%
+% See part a)
+
+%% c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?
+% Plot the same as nonlinear, but use linear equations in function file.
+%
+%% Linearized about the singular point at the origin
+% The phase portrait of the linearized system looks very similar to that of
+% the nonlinear system near the $\Theta$-axis where the effects of the
+% squared term are inconsequential. The linearized system is always stable,
+% with trajectories tending toward the origin. 
+%
+tspan = [0 2];
+figure();
+hold on
+for i = -4:1:4
+    for j = -4:1:4
+        T0 = [i; j];
+        [t,T] = ode45(@P1stateEqn,tspan,T0,[],2);
+        h = plot(T(:,1),T(:,2));
+        c = get(h,'color');
+        plot(T0(1),T0(2),'+','color',c);
+    end
+end
+axis([-5 5 -5 5])
+axis equal
+xlabel('$\Theta$')
+ylabel('$\dot{\Theta}$')
+title('Linearized about the origin')
+hold off
+
+%% Linearized about the singular point at (-3, 0)
+% The phase portrait of the linzearized system looks very similar to that
+% of the nonlinear system near $\bar{x}=(-3,0)$ where the squared term is
+% canceled by the $x_1$ term preceding it in the nonlinear first-order
+% system.
+%
+tspan = [0 2];
+figure();
+hold on
+for i = -6:1:2
+    for j = -4:1:4
+        T0 = [i; j];
+        [t,T] = ode45(@P1stateEqn,tspan,T0,[],3);
+        h = plot(T(:,1),T(:,2));
+        c = get(h,'color');
+        plot(T0(1),T0(2),'+','color',c);
+    end
+end
+axis([-5 1 -5 5])
+axis equal
+xlabel('$\Theta$')
+ylabel('$\dot{\Theta}$')
+title('Linearized about (-3,0)')
+hold off
+
+##### SOURCE END #####
+--></body></html>

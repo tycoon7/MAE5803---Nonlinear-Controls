@@ -1,0 +1,285 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>MAE 5803 - Homework #1 Problem #2</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-01-25"><meta name="DC.source" content="HW1P2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>MAE 5803 - Homework #1 Problem #2</h1><!--introduction--><p>Tim Coon: 25, January 2017</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Consider the following second-order system</a></li><li><a href="#3">a) Identify Singular points</a></li><li><a href="#4">First Singular Point</a></li><li><a href="#5">Second Singular Point</a></li><li><a href="#6">b) Let <img src="HW1P2_eq02324749428921882190.png" alt="$\mu = 0$">.</a></li><li><a href="#7">Singular Point, <img src="HW1P2_eq02324749428921882190.png" alt="$\mu = 0$"></a></li><li><a href="#8">c) Let <img src="HW1P2_eq11149606144208047617.png" alt="$\mu = -1$"></a></li><li><a href="#9">No Singular Points for <img src="HW1P2_eq11149606144208047617.png" alt="$\mu = -1$"></a></li><li><a href="#10">d) Comments</a></li></ul></div><pre class="codeinput">clear; close <span class="string">all</span>; clc;
+</pre><h2>Consider the following second-order system<a name="2"></a></h2><p><img src="HW1P2_eq10090234186448723754.png" alt="$$ \dot{x}_1 = \mu - x^2_1 $$"></p><p><img src="HW1P2_eq07396240841678966956.png" alt="$$ \dot{x}_2 = -x_2 $$"></p><h2>a) Identify Singular points<a name="3"></a></h2><p>For <img src="HW1P2_eq01625652409822981550.png" alt="$\mu = 1$">, find the singular points of the system, then determine the stability of the singular points by analyzing the linearized equation about each singular point. Generate the phase portrait of the system using MATLAB&reg; to confirm your analysis. Frame your plot so that the horizontal and vertical axes range from -2 to 2.</p><pre class="codeinput">mu = 1;
+tspan = [0 1];
+figure();
+hold <span class="string">on</span>
+<span class="keyword">for</span> x1 = -2:.5:2
+    <span class="keyword">for</span> x2 = -2:.5:2
+        X0 = [x1; x2];
+        [t,X] = ode45(@P2stateEqn,tspan,X0,[],mu);
+        h = plot(X(:,1),X(:,2));
+        c = get(h,<span class="string">'color'</span>);
+        plot(X0(1),X0(2),<span class="string">'+'</span>,<span class="string">'color'</span>,c);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+axis([-2 2 -2 2])
+xlabel(<span class="string">'$x_1$'</span>)
+ylabel(<span class="string">'$x_2$'</span>)
+title(<span class="string">'Nonlinear system phase portrait, $\mu = 1$'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="HW1P2_01.png" alt=""> <h2>First Singular Point<a name="4"></a></h2><p>The first singular point is a stable node at (1,0). Use the Jacobian to linearize about this point. Both eigenvalues have negative real parts, supporting the ID as a stable focus.</p><p><img src="HW1P2_eq06092480856323411294.png" alt="$$ A_1 = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(1,0)} $$"></p><p><img src="HW1P2_eq09833355209460943387.png" alt="$$ \frac{\partial{f_1}}{\partial{x_1}} = -2x_1 \quad&#xA;   \frac{\partial{f_1}}{\partial{x_2}} = 0     \quad&#xA;   \frac{\partial{f_2}}{\partial{x_1}} = 0     \quad&#xA;   \frac{\partial{f_2}}{\partial{x_2}} = -1    $$"></p><p><img src="HW1P2_eq17628108218721176111.png" alt="$$ A_1 = \pmatrix{-2&amp;0\cr&#xA;                   0&amp;-1\cr}$$"></p><pre class="codeinput">eValue1 = eig([-2 0; 0 -1])
+</pre><pre class="codeoutput">
+eValue1 =
+
+    -2
+    -1
+
+</pre><h2>Second Singular Point<a name="5"></a></h2><p>The second singular point is a saddle point at (-1,0). Use the Jacobian to linearize about this point. Both eigenvalues have negative real parts, supporting the ID as a stable focus.</p><p><img src="HW1P2_eq11344407570143213365.png" alt="$$ A_2 = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(-1,0)} $$"></p><p><img src="HW1P2_eq08483763521203498607.png" alt="$$ A_2 = \pmatrix{2&amp;0\cr&#xA;                  0&amp;-1\cr}$$"></p><pre class="codeinput">eValue2 = eig([2 0; 0 -1])
+</pre><pre class="codeoutput">
+eValue2 =
+
+    -1
+     2
+
+</pre><h2>b) Let <img src="HW1P2_eq02324749428921882190.png" alt="$\mu = 0$">.<a name="6"></a></h2><p>Repeat part (a) for <img src="HW1P2_eq02324749428921882190.png" alt="$\mu = 0$">.</p><pre class="codeinput">mu = 0;
+tspan = [0 4];
+figure();
+hold <span class="string">on</span>
+<span class="keyword">for</span> x1 = -2:.5:2
+    <span class="keyword">for</span> x2 = -2:1:2
+        X0 = [x1; x2];
+        [t,X] = ode45(@P2stateEqn,tspan,X0,[],mu);
+        h = plot(X(:,1),X(:,2));
+        c = get(h,<span class="string">'color'</span>);
+        plot(X0(1),X0(2),<span class="string">'+'</span>,<span class="string">'color'</span>,c);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+axis([-2 2 -2 2])
+xlabel(<span class="string">'$x_1$'</span>)
+ylabel(<span class="string">'$x_2$'</span>)
+title(<span class="string">'Nonlinear system phase portrait, $\mu = 0$'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="HW1P2_02.png" alt=""> <h2>Singular Point, <img src="HW1P2_eq02324749428921882190.png" alt="$\mu = 0$"><a name="7"></a></h2><p>The singular point at the origin is an unstable node. Use the Jacobian to linearize about this point. One eigenvalue at the origin of the complex plane with no negative eigenvalues means the stability of the system cannot be determined by the eigenvalues alone. From the phase portrait, it is clear any state in the right-half plane tends toward the origin. This would indicate stability were it mirrored by the left-half plane. However, any state in the left-hand plane escapes along the negative <img src="HW1P2_eq03385156042344747669.png" alt="$x_2$"> axis, so the node is unstable.</p><p><img src="HW1P2_eq16932942898855940254.png" alt="$$ A_2 = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(0,0)} $$"></p><p><img src="HW1P2_eq12893577176488219971.png" alt="$$ A_2 = \pmatrix{0&amp;0\cr&#xA;                  0&amp;-1\cr}$$"></p><pre class="codeinput">eValue1 = eig([0 0; 0 -1])
+</pre><pre class="codeoutput">
+eValue1 =
+
+    -1
+     0
+
+</pre><h2>c) Let <img src="HW1P2_eq11149606144208047617.png" alt="$\mu = -1$"><a name="8"></a></h2><p>Repeat again part (a) for <img src="HW1P2_eq11149606144208047617.png" alt="$\mu = -1$">.</p><p>The linearized systems look the same because <img src="HW1P2_eq05371638286043275527.png" alt="$\mu$"> only affects the forcing function</p><pre class="codeinput">mu = -1;
+tspan = [0 1];
+figure();
+hold <span class="string">on</span>
+<span class="keyword">for</span> x1 = -2:.5:2
+    <span class="keyword">for</span> x2 = -2:.5:2
+        X0 = [x1; x2];
+        [t,X] = ode45(@P2stateEqn,tspan,X0,[],mu);
+        h = plot(X(:,1),X(:,2));
+        c = get(h,<span class="string">'color'</span>);
+        plot(X0(1),X0(2),<span class="string">'+'</span>,<span class="string">'color'</span>,c);
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+axis([-2 2 -2 2])
+xlabel(<span class="string">'$x_1$'</span>)
+ylabel(<span class="string">'$x_2$'</span>)
+title(<span class="string">'Nonlinear system phase portrait, $\mu = -1$'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="HW1P2_03.png" alt=""> <h2>No Singular Points for <img src="HW1P2_eq11149606144208047617.png" alt="$\mu = -1$"><a name="9"></a></h2><p>There are no singular points within the range <img src="HW1P2_eq15763982819142154771.png" alt="$-2 \leq x_1,x_2 \leq 2$">.</p><h2>d) Comments<a name="10"></a></h2><p>What phenomenon do you observe as the parameter, <img src="HW1P2_eq05371638286043275527.png" alt="$\mu$">, varies as in the above? Explain the reason for your answer.</p><p>Because <img src="HW1P2_eq10886195229257635069.png" alt="$\dot{x}_2 = -x_2$"> always, it is clear the slope towards the horizontal axis decays exponentially in all scenarios. Effectively, <img src="HW1P2_eq05371638286043275527.png" alt="$\mu$"> changes the initial rate of change of the solution in the negative <img src="HW1P2_eq06613056106014670631.png" alt="$x_1$">-direction which becomes more negative as the function moves away from the vertical axis. Thus, decreasing <img src="HW1P2_eq05371638286043275527.png" alt="$\mu$"> serves to increase the initial rate of change in the negative <img src="HW1P2_eq06613056106014670631.png" alt="$x_1$">-direction and the singular points first merge at the origin, then move quickly in the negative <img src="HW1P2_eq06613056106014670631.png" alt="$x_1$">-direction together.</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% MAE 5803 - Homework #1 Problem #2
+% Tim Coon: 25, January 2017
+%%
+clear; close all; clc;
+
+%% Consider the following second-order system
+%
+% $$ \dot{x}_1 = \mu - x^2_1 $$
+%
+% $$ \dot{x}_2 = -x_2 $$
+
+%% a) Identify Singular points
+% For $\mu = 1$, find the singular points of the system, then determine the stability of the singular points by analyzing the linearized equation about each singular point. Generate the phase portrait of the system using MATLAB(R) to confirm your analysis. Frame your plot so that the horizontal and vertical axes range from -2 to 2.
+%
+mu = 1;
+tspan = [0 1];
+figure();
+hold on
+for x1 = -2:.5:2
+    for x2 = -2:.5:2
+        X0 = [x1; x2];
+        [t,X] = ode45(@P2stateEqn,tspan,X0,[],mu);
+        h = plot(X(:,1),X(:,2));
+        c = get(h,'color');
+        plot(X0(1),X0(2),'+','color',c);
+    end
+end
+axis([-2 2 -2 2])
+xlabel('$x_1$')
+ylabel('$x_2$')
+title('Nonlinear system phase portrait, $\mu = 1$')
+hold off
+
+%% First Singular Point
+% The first singular point is a stable node at (1,0). Use the
+% Jacobian to linearize about this point. Both eigenvalues have negative
+% real parts, supporting the ID as a stable focus.
+%
+% $$ A_1 = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(1,0)} $$
+%
+% $$ \frac{\partial{f_1}}{\partial{x_1}} = -2x_1 \quad
+%    \frac{\partial{f_1}}{\partial{x_2}} = 0     \quad
+%    \frac{\partial{f_2}}{\partial{x_1}} = 0     \quad
+%    \frac{\partial{f_2}}{\partial{x_2}} = -1    $$
+%
+% $$ A_1 = \pmatrix{-2&0\cr
+%                    0&-1\cr}$$
+eValue1 = eig([-2 0; 0 -1])
+
+
+%% Second Singular Point
+% The second singular point is a saddle point at (-1,0). Use the
+% Jacobian to linearize about this point. Both eigenvalues have negative
+% real parts, supporting the ID as a stable focus.
+%
+% $$ A_2 = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(-1,0)} $$
+%
+% $$ A_2 = \pmatrix{2&0\cr
+%                   0&-1\cr}$$
+eValue2 = eig([2 0; 0 -1])
+
+%% b) Let $\mu = 0$.
+% Repeat part (a) for $\mu = 0$.
+%
+mu = 0;
+tspan = [0 4];
+figure();
+hold on
+for x1 = -2:.5:2
+    for x2 = -2:1:2
+        X0 = [x1; x2];
+        [t,X] = ode45(@P2stateEqn,tspan,X0,[],mu);
+        h = plot(X(:,1),X(:,2));
+        c = get(h,'color');
+        plot(X0(1),X0(2),'+','color',c);
+    end
+end
+axis([-2 2 -2 2])
+xlabel('$x_1$')
+ylabel('$x_2$')
+title('Nonlinear system phase portrait, $\mu = 0$')
+hold off
+
+%% Singular Point, $\mu = 0$
+% The singular point at the origin is an unstable node. Use the
+% Jacobian to linearize about this point. One eigenvalue at the origin of
+% the complex plane with no negative eigenvalues means the stability of the
+% system cannot be determined by the eigenvalues alone. From the phase
+% portrait, it is clear any state in the right-half plane tends toward the
+% origin. This would indicate stability were it mirrored by the left-half
+% plane. However, any state in the left-hand plane escapes along the
+% negative $x_2$ axis, so the node is unstable.
+%
+% $$ A_2 = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(0,0)} $$
+%
+% $$ A_2 = \pmatrix{0&0\cr
+%                   0&-1\cr}$$
+eValue1 = eig([0 0; 0 -1])
+
+%% c) Let $\mu = -1$ 
+% Repeat again part (a) for $\mu = -1$.
+%
+% The linearized systems look the same because $\mu$ only affects the
+% forcing function
+mu = -1;
+tspan = [0 1];
+figure();
+hold on
+for x1 = -2:.5:2
+    for x2 = -2:.5:2
+        X0 = [x1; x2];
+        [t,X] = ode45(@P2stateEqn,tspan,X0,[],mu);
+        h = plot(X(:,1),X(:,2));
+        c = get(h,'color');
+        plot(X0(1),X0(2),'+','color',c);
+    end
+end
+axis([-2 2 -2 2])
+xlabel('$x_1$')
+ylabel('$x_2$')
+title('Nonlinear system phase portrait, $\mu = -1$')
+hold off
+
+%% No Singular Points for $\mu = -1$
+% There are no singular points within the range $-2 \leq x_1,x_2 \leq 2$.
+
+%% d) Comments
+% What phenomenon do you observe as the parameter, $\mu$, varies as in the above? Explain the reason for your answer.
+%
+% Because $\dot{x}_2 = -x_2$ always, it is clear the slope towards the
+% horizontal axis decays exponentially in all scenarios. Effectively, $\mu$
+% changes the initial rate of change of the solution in the negative 
+% $x_1$-direction which becomes more negative as the function moves away
+% from the vertical axis. Thus, decreasing $\mu$ serves to increase the
+% initial rate of change in the negative $x_1$-direction and the singular
+% points first merge at the origin, then move quickly in the negative 
+% $x_1$-direction together.
+##### SOURCE END #####
+--></body></html>
