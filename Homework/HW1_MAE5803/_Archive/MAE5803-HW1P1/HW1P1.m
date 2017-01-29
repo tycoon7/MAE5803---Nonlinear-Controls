@@ -3,6 +3,18 @@
 %%
 clear; close all; clc;
 
+%%
+warning('off','MATLAB:ode45:IntegrationTolNotMet') % suppress ode45 warnings
+
+%%
+% Set default figure properties
+set(0,'defaultlinelinewidth',2.5)
+set(0,'defaultaxeslinewidth',2.5)
+set(0,'defaultpatchlinewidth',2.5)
+set(0,'defaulttextfontsize',14)
+set(0,'defaultaxesfontsize',14)
+set(0,'defaulttextinterpreter','latex')
+
 %% Second-Order Nonlinear State Equation:
 % $$ \ddot{\Theta}_{(t)} + 0.6 \dot{\Theta}_{(t)} + 3\Theta_{(t)} + \Theta^2_{(t)} = 0 $$
 %% First-Order Nonlinear State Equations:

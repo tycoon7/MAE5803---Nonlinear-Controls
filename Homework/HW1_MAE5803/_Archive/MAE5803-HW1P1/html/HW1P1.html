@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>MAE 5803 - Homework #1 Problem #1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-01-25"><meta name="DC.source" content="HW1P1.m"><style type="text/css">
+      --><title>MAE 5803 - Homework #1 Problem #1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-01-28"><meta name="DC.source" content="HW1P1.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,10 +66,15 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>MAE 5803 - Homework #1 Problem #1</h1><!--introduction--><p>Tim Coon: 25, January 2017</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Second-Order Nonlinear State Equation:</a></li><li><a href="#3">First-Order Nonlinear State Equations:</a></li><li><a href="#4">Draw the phase portrait</a></li><li><a href="#5">Plot the field of the phase portrait</a></li><li><a href="#6">a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).</a></li><li><a href="#7">First Singular Point</a></li><li><a href="#8">Second Singular Point</a></li><li><a href="#9">b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.</a></li><li><a href="#10">c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?</a></li><li><a href="#11">Linearized about the singular point at the origin</a></li><li><a href="#12">Linearized about the singular point at (-3, 0)</a></li></ul></div><pre class="codeinput">clear; close <span class="string">all</span>; clc;
-warning(<span class="string">'off'</span>,<span class="string">'MATLAB:ode45:IntegrationTolNotMet'</span>) <span class="comment">% suppress ode45 warnings</span>
+  </style></head><body><div class="content"><h1>MAE 5803 - Homework #1 Problem #1</h1><!--introduction--><p>Tim Coon: 25, January 2017</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#4">Second-Order Nonlinear State Equation:</a></li><li><a href="#5">First-Order Nonlinear State Equations:</a></li><li><a href="#6">Draw the phase portrait</a></li><li><a href="#7">Plot the field of the phase portrait</a></li><li><a href="#8">a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).</a></li><li><a href="#9">First Singular Point</a></li><li><a href="#10">Second Singular Point</a></li><li><a href="#11">b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.</a></li><li><a href="#12">c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?</a></li><li><a href="#13">Linearized about the singular point at the origin</a></li><li><a href="#14">Linearized about the singular point at (-3, 0)</a></li></ul></div><pre class="codeinput">clear; close <span class="string">all</span>; clc;
+</pre><pre class="codeinput">warning(<span class="string">'off'</span>,<span class="string">'MATLAB:ode45:IntegrationTolNotMet'</span>) <span class="comment">% suppress ode45 warnings</span>
+</pre><p>Set default figure properties</p><pre class="codeinput">set(0,<span class="string">'defaultlinelinewidth'</span>,2.5)
+set(0,<span class="string">'defaultaxeslinewidth'</span>,2.5)
+set(0,<span class="string">'defaultpatchlinewidth'</span>,2.5)
+set(0,<span class="string">'defaulttextfontsize'</span>,14)
+set(0,<span class="string">'defaultaxesfontsize'</span>,14)
 set(0,<span class="string">'defaulttextinterpreter'</span>,<span class="string">'latex'</span>)
-</pre><h2>Second-Order Nonlinear State Equation:<a name="2"></a></h2><p><img src="HW1P1_eq00748535024381780666.png" alt="$$ \ddot{\Theta}_{(t)} + 0.6 \dot{\Theta}_{(t)} + 3\Theta_{(t)} + \Theta^2_{(t)} = 0 $$"></p><h2>First-Order Nonlinear State Equations:<a name="3"></a></h2><p><img src="HW1P1_eq08159155655943494067.png" alt="$$ \dot{x}_1 = x_2 $$"></p><p><img src="HW1P1_eq04531298366012044755.png" alt="$$ \dot{x}_2 = -0.6x_2 - 3x_1 - x^2_1 $$"></p><h2>Draw the phase portrait<a name="4"></a></h2><p>Numerically integrate the state equation using ode45 starting at various points in the plane. The Plus (+) marks indicate starting points for each simulated trajectory.</p><pre class="codeinput">tspan = [0 2];
+</pre><h2>Second-Order Nonlinear State Equation:<a name="4"></a></h2><p><img src="HW1P1_eq00748535024381780666.png" alt="$$ \ddot{\Theta}_{(t)} + 0.6 \dot{\Theta}_{(t)} + 3\Theta_{(t)} + \Theta^2_{(t)} = 0 $$"></p><h2>First-Order Nonlinear State Equations:<a name="5"></a></h2><p><img src="HW1P1_eq08159155655943494067.png" alt="$$ \dot{x}_1 = x_2 $$"></p><p><img src="HW1P1_eq04531298366012044755.png" alt="$$ \dot{x}_2 = -0.6x_2 - 3x_1 - x^2_1 $$"></p><h2>Draw the phase portrait<a name="6"></a></h2><p>Numerically integrate the state equation using ode45 starting at various points in the plane. The Plus (+) marks indicate starting points for each simulated trajectory.</p><pre class="codeinput">tspan = [0 2];
 figure();
 hold <span class="string">on</span>
 <span class="keyword">for</span> i = -5:1:5
@@ -88,7 +93,7 @@ xlabel(<span class="string">'$\Theta$'</span>)
 ylabel(<span class="string">'$\dot{\Theta}$'</span>)
 title(<span class="string">'Nonlinear system phase portrait'</span>)
 hold <span class="string">off</span>
-</pre><img vspace="5" hspace="5" src="HW1P1_01.png" alt=""> <h2>Plot the field of the phase portrait<a name="5"></a></h2><pre class="codeinput">[x1, x2] = meshgrid(-4:0.5:4, -4:0.5:4);
+</pre><img vspace="5" hspace="5" src="HW1P1_01.png" alt=""> <h2>Plot the field of the phase portrait<a name="7"></a></h2><pre class="codeinput">[x1, x2] = meshgrid(-4:0.5:4, -4:0.5:4);
 x1dot = x2;
 x2dot = -0.6*x2 - 3.*x1 - x1.^2;
 figure()
@@ -98,23 +103,21 @@ axis <span class="string">equal</span>
 xlabel(<span class="string">'$\Theta$'</span>)
 ylabel(<span class="string">'$\dot{\Theta}$'</span>)
 title(<span class="string">'Phase portrait with gradients'</span>)
-</pre><img vspace="5" hspace="5" src="HW1P1_02.png" alt=""> <h2>a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).<a name="6"></a></h2><p>Reference Slotine, Section 2.5 There are two singular points.</p><h2>First Singular Point<a name="7"></a></h2><p>The first singular point is a stable focus at the origin. Use the Jacobian to linearize about the origin. Both eigenvalues have negative real parts, supporting the ID as a stable focus.</p><p><img src="HW1P1_eq02247956568656626036.png" alt="$$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=\bar{0}} $$"></p><p><img src="HW1P1_eq09051619144644011309.png" alt="$$ \frac{\partial{f_1}}{\partial{x_1}} = 0        \quad&#xA;   \frac{\partial{f_1}}{\partial{x_2}} = 1        \quad&#xA;   \frac{\partial{f_2}}{\partial{x_1}} = 3 - 2x_1 \quad&#xA;   \frac{\partial{f_2}}{\partial{x_2}} = -0.6     $$"></p><p><img src="HW1P1_eq17583039187716891276.png" alt="$$ A = \pmatrix{0&amp;1\cr&#xA;                -3&amp;-0.6\cr}$$"></p><pre class="codeinput">A1 = [0 1; -3 -0.6];
-eValue1 = eig(A1)
+</pre><img vspace="5" hspace="5" src="HW1P1_02.png" alt=""> <h2>a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).<a name="8"></a></h2><p>Reference Slotine, Section 2.5 There are two singular points.</p><h2>First Singular Point<a name="9"></a></h2><p>The first singular point is a stable focus at the origin. Use the Jacobian to linearize about the origin. Both eigenvalues have negative real parts, supporting the ID as a stable focus.</p><p><img src="HW1P1_eq02247956568656626036.png" alt="$$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=\bar{0}} $$"></p><p><img src="HW1P1_eq09051619144644011309.png" alt="$$ \frac{\partial{f_1}}{\partial{x_1}} = 0        \quad&#xA;   \frac{\partial{f_1}}{\partial{x_2}} = 1        \quad&#xA;   \frac{\partial{f_2}}{\partial{x_1}} = 3 - 2x_1 \quad&#xA;   \frac{\partial{f_2}}{\partial{x_2}} = -0.6     $$"></p><p><img src="HW1P1_eq17583039187716891276.png" alt="$$ A = \pmatrix{0&amp;1\cr&#xA;                -3&amp;-0.6\cr}$$"></p><pre class="codeinput">eValue1 = eig([0 1; -3 -0.6])
 </pre><pre class="codeoutput">
 eValue1 =
 
   -0.3000 + 1.7059i
   -0.3000 - 1.7059i
 
-</pre><h2>Second Singular Point<a name="8"></a></h2><p>The second sigular point is a saddle point at (-3,0). Use the Jacobian to linearize about this point. One eigenvalue is positive and the other negative with no imaginary parts, supporting the ID as a saddle point.</p><p><img src="HW1P1_eq13420966220003024598.png" alt="$$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(-3,0)} $$"></p><p><img src="HW1P1_eq02747607414686106322.png" alt="$$ \frac{\partial{f_1}}{\partial{x_1}} = 0         \quad&#xA;   \frac{\partial{f_1}}{\partial{x_2}} = 1         \quad&#xA;   \frac{\partial{f_2}}{\partial{x_1}} = -3 - 2x_1 \quad&#xA;   \frac{\partial{f_2}}{\partial{x_2}} = -0.6      $$"></p><p><img src="HW1P1_eq02881572758737217240.png" alt="$$ A = \pmatrix{0&amp;1\cr&#xA;                3&amp;-0.6\cr}$$"></p><pre class="codeinput">A2 = [0 1; 3 -0.6];
-eValue2 = eig(A2)
+</pre><h2>Second Singular Point<a name="10"></a></h2><p>The second sigular point is a saddle point at (-3,0). Use the Jacobian to linearize about this point. One eigenvalue is positive and the other negative with no imaginary parts, supporting the ID as a saddle point.</p><p><img src="HW1P1_eq13420966220003024598.png" alt="$$ A = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(-3,0)} $$"></p><p><img src="HW1P1_eq02747607414686106322.png" alt="$$ \frac{\partial{f_1}}{\partial{x_1}} = 0         \quad&#xA;   \frac{\partial{f_1}}{\partial{x_2}} = 1         \quad&#xA;   \frac{\partial{f_2}}{\partial{x_1}} = -3 - 2x_1 \quad&#xA;   \frac{\partial{f_2}}{\partial{x_2}} = -0.6      $$"></p><p><img src="HW1P1_eq02881572758737217240.png" alt="$$ A = \pmatrix{0&amp;1\cr&#xA;                3&amp;-0.6\cr}$$"></p><pre class="codeinput">eValue2 = eig([0 1; 3 -0.6])
 </pre><pre class="codeoutput">
 eValue2 =
 
     1.4578
    -2.0578
 
-</pre><h2>b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.<a name="9"></a></h2><p>See part a)</p><h2>c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?<a name="10"></a></h2><p>Plot the same as nonlinear, but use linear equations in function file.</p><h2>Linearized about the singular point at the origin<a name="11"></a></h2><p>The phase portrait of the linearized system looks very similar to that of the nonlinear system near the <img src="HW1P1_eq12685105922891341491.png" alt="$\Theta$">-axis where the effects of the squared term are inconsequential. The linearized system is always stable, with trajectories tending toward the origin.</p><pre class="codeinput">tspan = [0 2];
+</pre><h2>b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.<a name="11"></a></h2><p>See part a)</p><h2>c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?<a name="12"></a></h2><p>Plot the same as nonlinear, but use linear equations in function file.</p><h2>Linearized about the singular point at the origin<a name="13"></a></h2><p>The phase portrait of the linearized system looks very similar to that of the nonlinear system near the <img src="HW1P1_eq12685105922891341491.png" alt="$\Theta$">-axis where the effects of the squared term are inconsequential. The linearized system is always stable, with trajectories tending toward the origin.</p><pre class="codeinput">tspan = [0 2];
 figure();
 hold <span class="string">on</span>
 <span class="keyword">for</span> i = -4:1:4
@@ -132,7 +135,7 @@ xlabel(<span class="string">'$\Theta$'</span>)
 ylabel(<span class="string">'$\dot{\Theta}$'</span>)
 title(<span class="string">'Linearized about the origin'</span>)
 hold <span class="string">off</span>
-</pre><img vspace="5" hspace="5" src="HW1P1_03.png" alt=""> <h2>Linearized about the singular point at (-3, 0)<a name="12"></a></h2><p>The phase portrait of the linzearized system looks very similar to that of the nonlinear system near <img src="HW1P1_eq08343455380384741759.png" alt="$\bar{x}=(-3,0)$"> where the squared term is canceled by the <img src="HW1P1_eq06613056106014670631.png" alt="$x_1$"> term preceding it in the nonlinear first-order system.</p><pre class="codeinput">tspan = [0 2];
+</pre><img vspace="5" hspace="5" src="HW1P1_03.png" alt=""> <h2>Linearized about the singular point at (-3, 0)<a name="14"></a></h2><p>The phase portrait of the linzearized system looks very similar to that of the nonlinear system near <img src="HW1P1_eq08343455380384741759.png" alt="$\bar{x}=(-3,0)$"> where the squared term is canceled by the <img src="HW1P1_eq06613056106014670631.png" alt="$x_1$"> term preceding it in the nonlinear first-order system.</p><pre class="codeinput">tspan = [0 2];
 figure();
 hold <span class="string">on</span>
 <span class="keyword">for</span> i = -6:1:2
@@ -156,8 +159,19 @@ hold <span class="string">off</span>
 % Tim Coon: 25, January 2017
 %%
 clear; close all; clc;
+
+%%
 warning('off','MATLAB:ode45:IntegrationTolNotMet') % suppress ode45 warnings
-set(0,'defaulttextinterpreter','latex') 
+
+%%
+% Set default figure properties
+set(0,'defaultlinelinewidth',2.5)
+set(0,'defaultaxeslinewidth',2.5)
+set(0,'defaultpatchlinewidth',2.5)
+set(0,'defaulttextfontsize',14)
+set(0,'defaultaxesfontsize',14)
+set(0,'defaulttextinterpreter','latex')
+
 %% Second-Order Nonlinear State Equation:
 % $$ \ddot{\Theta}_{(t)} + 0.6 \dot{\Theta}_{(t)} + 3\Theta_{(t)} + \Theta^2_{(t)} = 0 $$
 %% First-Order Nonlinear State Equations:
@@ -218,8 +232,7 @@ title('Phase portrait with gradients')
 %
 % $$ A = \pmatrix{0&1\cr
 %                 -3&-0.6\cr}$$
-A1 = [0 1; -3 -0.6];
-eValue1 = eig(A1)
+eValue1 = eig([0 1; -3 -0.6])
 
 %% Second Singular Point
 % The second sigular point is a saddle point at (-3,0). Use the Jacobian to
@@ -235,8 +248,7 @@ eValue1 = eig(A1)
 %
 % $$ A = \pmatrix{0&1\cr
 %                 3&-0.6\cr}$$
-A2 = [0 1; 3 -0.6];
-eValue2 = eig(A2)
+eValue2 = eig([0 1; 3 -0.6])
 
 %% b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.
 %
