@@ -9,7 +9,8 @@ clear; close all; clc;
 %
 % $$ \dot{x}_2 = x_1 - (1 - x^2_1)x_2 $$
 
-%% a) Draw the phase portraits of the system about the equilibrium point $(x_1,x_2) = (0,0)$. Be sure to include a sufficiently wide area of the state space to capture the possible limit cycle in the system.
+%% a) Phase Portraits
+% Draw the phase portraits of the system about the equilibrium point $(x_1,x_2) = (0,0)$. Be sure to include a sufficiently wide area of the state space to capture the possible limit cycle in the system.
 
 tspan = [0 5];
 figure();
@@ -29,12 +30,14 @@ ylabel('$x_2$')
 title('Van der Pol Phase Portrait')
 hold off
 
-%% b) Is the limit cycle stable? Explain your answer.
+%% b) Limit Cycle Stability Analysis
+% Is the limit cycle stable? Explain your answer.
 % The limit cycle is stable because, for any $R>0$, there exists at least
 % one point within a ball of radius $r$ about the origin where the solution
 % tends toward the origin. Slotine, Definition 3.3
 
-%% c) Determine the stability of the equilibrium point at the origin (be specific on the type of stability). Determine its region of attractrion if it is asymptotically stable.
+%% c) Origin Stability Analysis
+% Determine the stability of the equilibrium point at the origin (be specific on the type of stability). Determine its region of attractrion if it is asymptotically stable.
 % Reference Slotine Definition 3.4. The equilibrium point at the origin is
 % asymptotically stable because it is stable (see part b) and there does
 % exist some ball of radius r (anywhere inside the limit cycle) for which

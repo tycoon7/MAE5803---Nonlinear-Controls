@@ -46,7 +46,8 @@ xlabel('$\Theta$')
 ylabel('$\dot{\Theta}$')
 title('Phase portrait with gradients')
 
-%% a) From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).
+%% a) ID Singular points
+% From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).
 % Reference Slotine, Section 2.5
 % There are two singular points.
 %% First Singular Point
@@ -81,11 +82,13 @@ eValue1 = eig([0 1; -3 -0.6])
 %                 3&-0.6\cr}$$
 eValue2 = eig([0 1; 3 -0.6])
 
-%% b) Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.
+%% b) Linearize
+% Obtain the linearized equations about the singular points of the system. Then, determine the eigenvalues of each linearized equation to determine the stability of the corresponding singular point.
 %
 % See part a)
 
-%% c) Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?
+%% c) Linearized Phase Portraits
+% Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?
 % Plot the same as nonlinear, but use linear equations in function file.
 %
 %% Linearized about the singular point at the origin

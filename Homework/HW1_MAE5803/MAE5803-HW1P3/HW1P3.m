@@ -7,7 +7,7 @@ clear; close all; clc;
 %
 % $$ \dot{x}_1 = x_2 $$
 %
-% $$ \dot{x}_2 = -x_1 - (\mu - x^2_1)x_2 $$
+% $$ \dot{x}_2 = -x_1 + (\mu - x^2_1)x_2 $$
 
 %% a) Plot Eigenvalues
 % Find the eigenvalues of the linearized system about the equilibrium point, (0,0). Express your answer in terms of $\mu$. Sketch in the complex plane the variation of the locations of these eigenvalues as $\mu$ varies from -0.5 to 0.5.
@@ -17,11 +17,11 @@ clear; close all; clc;
 %
 % $$ \frac{\partial{f_1}}{\partial{x_1}} = 0            \quad
 %    \frac{\partial{f_1}}{\partial{x_2}} = 1            \quad
-%    \frac{\partial{f_2}}{\partial{x_1}} = -1 + 2x_1x_2 \quad
-%    \frac{\partial{f_2}}{\partial{x_2}} = -\mu + x^2_1 $$
+%    \frac{\partial{f_2}}{\partial{x_1}} = -1 - 2x_1x_2 \quad
+%    \frac{\partial{f_2}}{\partial{x_2}} = \mu - x^2_1 $$
 %
 % $$ A = \pmatrix{0&1\cr
-%                 -1&-\mu\cr}$$
+%                 -1&\mu\cr}$$
 % 
 % Calculate the eigenvalues for samples of the range of $\mu$ specified
 mu = [-0.5:0.25:0.5];
@@ -29,7 +29,7 @@ eValue = zeros(2,length(mu));
 figure(1)
 hold on
 for i = 1:length(mu)
-    A =  [0 1; -1 -mu(i)];
+    A =  [0 1; -1 mu(i)];
     eValue(:,i) = eig(A);
     plot(real(eValue(:,i)),imag(eValue(:,i)),'*','MarkerSize',12)
 end
@@ -49,9 +49,9 @@ mu = [-0.2 0 0.2];
 for i = 1:length(mu)
     figure()
     hold on
-    for x1 = -1.5:.5:1.5
+    for x1 = -1.5:.75:1.5
         for x2 = -1.5:.5:1.5
-            tspan = [0 3];
+            tspan = [0 5];
             x0 = [x1; x2];
             [t,x] = ode45(@P3stateEqn,tspan,x0,[],mu(i));
             h = plot(x(:,1),x(:,2));
@@ -78,8 +78,8 @@ end
 % to positive, the real part of the eigenvalues moves from positive to
 % negative. Thus, the system transitions from locally asymptotically stable
 % to locally unstable. At $\mu = 0$, the eigenvalues have real parts equal
-% to zero, but the phase portrait reveals the system is unstable at this
-% point.
+% to zero and stability is not concluded by eigenvalue analysis, but the 
+% phase portrait reveals the system is stable at this point.
 %
 % Poincare-Bendixson Theorem: If a trajectory of a second-order autonomous system remains in a finite region ($\Omega$), then one of the following is true:
 %
@@ -89,10 +89,11 @@ end
 %
 % Consider the region defined by the ball centered on the origin with a
 % radius greater than the distance from the origin to the initial point.
-% The system with negative real parts of all eigenvalues goes towards the
+% The system with negative real parts to all eigenvalues goes towards the
 % equilibrium point at the origin. The system with zero real parts to the
-% eigen values are found to increase indefinitely, if only slowly when
-% near the origin. Thus, there is no region in which these trajectories are
-% contained and PB Theorem does not apply. The same goes for the
-% eigenvalues having positive real parts and the rate of increase increases
-% with $\mu$.
+% eigen values are found to act in the same way by observing the phase
+% portrait. Both of these systems have trajectories tending toward an
+% equilibrium point.
+% For the system with positive eigenvalues, the radius in the phase
+% portrait increases without bound. Thus, there is no region in which these
+% trajectories are contained and Poincare-Bendixson Theorem does not apply.

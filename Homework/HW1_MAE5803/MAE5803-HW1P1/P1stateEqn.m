@@ -1,7 +1,9 @@
+%% P1 State Equations
+%%
 function [dx] = P1stateEqn(t, x, flag)
 %P1stateEqn contains state eqn for MAE5803 HW1 P1
 % flag: choose which equation to integrate
-
+%
 dx = zeros(2,1);
 if flag == 1
     % nonlinear state equation

@@ -1,3 +1,5 @@
+%% P2 State Equations
+%%
 function [dx] = P2stateEqn(t, x, mu)
 %P2stateEqn contains state eqn for MAE5803 HW1 P2
 % 

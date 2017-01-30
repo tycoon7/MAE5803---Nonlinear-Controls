@@ -1,5 +1,4 @@
-%% P3 State Equations
-%%
+%% P
 function [dx] = P3stateEqn(t, x, mu)
 %P3stateEqn contains state eqn for MAE5803 HW1 P3
 % 
