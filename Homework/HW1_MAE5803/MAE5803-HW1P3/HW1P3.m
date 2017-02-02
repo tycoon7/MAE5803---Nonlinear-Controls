@@ -42,7 +42,7 @@ xlabel('$\sigma$'); ylabel('j$\omega$');
 legend(strcat('\mu = ',strread(num2str(mu),'%s')),'Location','EastOutside')
 hold off
 
-%% b) Nonliear Phase Portraits
+%% b) Nonlinear Phase Portraits
 % Draw the phase portraits of the system using MATLAB for $\mu = -0.2$, $\mu = 0$, and $\mu = 0.2$. Use -2 to 2 range of values for the horizontal and vertical axes.
 %
 mu = [-0.2 0 0.2];
@@ -74,7 +74,7 @@ end
 % # If the real part of at least one eigenvalue is positive, then $\bf{x} = \bf{0}$ is locally unstable
 % # If the real part of at least one eigenvalue is equal to zero, then the local stability of $\bf{x} = \bf{0}$ cannot be concluded
 %
-% From the plot of eigenvalues, it can be seen, as $\mu$ goes from negtive
+% From the plot of eigenvalues, it can be seen, as $\mu$ goes from negative
 % to positive, the real part of the eigenvalues moves from positive to
 % negative. Thus, the system transitions from locally asymptotically stable
 % to locally unstable. At $\mu = 0$, the eigenvalues have real parts equal
@@ -91,7 +91,7 @@ end
 % radius greater than the distance from the origin to the initial point.
 % The system with negative real parts to all eigenvalues goes towards the
 % equilibrium point at the origin. The system with zero real parts to the
-% eigen values are found to act in the same way by observing the phase
+% eigenvalues are found to act in the same way by observing the phase
 % portrait. Both of these systems have trajectories tending toward an
 % equilibrium point.
 % For the system with positive eigenvalues, the radius in the phase

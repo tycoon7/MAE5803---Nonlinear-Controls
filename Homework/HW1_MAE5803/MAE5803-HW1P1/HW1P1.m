@@ -48,7 +48,7 @@ title('Phase portrait with gradients')
 
 %% a) ID Singular points
 % From the phase portrait, identify the singular points of the system and determine their types (stable node, unstable focus, etc.).
-% Reference Slotine, Section 2.5
+% Reference Slotine, Section 2.5.
 % There are two singular points.
 %% First Singular Point
 % The first singular point is a stable focus at the origin. Use the
@@ -67,7 +67,7 @@ title('Phase portrait with gradients')
 eValue1 = eig([0 1; -3 -0.6])
 
 %% Second Singular Point
-% The second sigular point is a saddle point at (-3,0). Use the Jacobian to
+% The second singular point is a saddle point at (-3,0). Use the Jacobian to
 % linearize about this point. One eigenvalue is positive and the other 
 % negative with no imaginary parts, supporting the ID as a saddle point.
 %
@@ -88,7 +88,7 @@ eValue2 = eig([0 1; 3 -0.6])
 % See part a)
 
 %% c) Linearized Phase Portraits
-% Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighbothood of the singular points compare well with the phase portraits of the linearized equations?
+% Draw also the phase portraits of the linearized equations. Does the phase portrait of the nonlinear system in the neighborhood of the singular points compare well with the phase portraits of the linearized equations?
 % Plot the same as nonlinear, but use linear equations in function file.
 %
 %% Linearized about the singular point at the origin
@@ -117,7 +117,7 @@ title('Linearized about the origin')
 hold off
 
 %% Linearized about the singular point at (-3, 0)
-% The phase portrait of the linzearized system looks very similar to that
+% The phase portrait of the linearized system looks very similar to that
 % of the nonlinear system near $\bar{x}=(-3,0)$ where the squared term is
 % canceled by the $x_1$ term preceding it in the nonlinear first-order
 % system.

@@ -8,10 +8,10 @@ dx(1) = -x(2);
 dx(2) = x(1) - (1-x(1)^2)*x(2);
 
 %% ??
-% Here is the the Van der Pol Equation, according to one definition:
-%  "It is an equation describing self-sustaining oscillations in which
-%  energy is fed into small oscillations and removed from large 
-%  oscillations." -http://mathworld.wolfram.com/vanderPolEquation.html
+% Here is the Van der Pol Equation, according to one definition:
+% "It is an equation describing self-sustaining oscillations in which
+% energy is fed into small oscillations and removed from large 
+% oscillations." -http://mathworld.wolfram.com/vanderPolEquation.html
 %
 % $$ \dot{x}_1 = x_2 $$
 %
