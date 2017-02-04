@@ -32,9 +32,8 @@ hold off
 
 %% b) Limit Cycle Stability Analysis
 % Is the limit cycle stable? Explain your answer.
-% The limit cycle is stable because, for any $R>0$, there exists at least
-% one point within a ball of radius $r$ about the origin where the solution
-% tends toward the origin. Slotine, Definition 3.3
+% The limit cycle is unstable because a perturbation inside tends to the
+% origin and a perturbation outside increases without bound.
 
 %% c) Origin Stability Analysis
 % Determine the stability of the equilibrium point at the origin (be specific on the type of stability). Determine its region of attractrion if it is asymptotically stable.

@@ -89,4 +89,12 @@ end
 % # The trajectory itself is a limit cycle
 %
 % The system having $\mu > 0$ is unstable at the origin, by Slotine-Li
-% Definition 3.3.
+% Definition 3.3. However, there is a limit cycle all trajectories tend
+% toward regardless of origin.
+%
+% Notice this system exhibits bifurcation as $\mu$ transitions from
+% negative to positive The system switches from having a stable node at
+% the origin when the real parts of the eigenvalues are negative and
+% transitions to having a stable limit cycle when the real parts of
+% eigenvalues become positive and the point at the origin is no longer
+% stable.
