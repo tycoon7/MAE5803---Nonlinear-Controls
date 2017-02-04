@@ -814,7 +814,7 @@ for i = 1:getLength(equationList)
             internal.matlab.publish.writeImage(fullFilename,ext(2:end),frame,[],[])
             % Put a link to the image in the DOM.
 %             swapTexForImg(dom,equationNode,outputDir,fullFilename,equationText,newSize(2),newSize(1))
-            scale = 2;
+            scale = 3;
             swapTexForImg(dom,equationNode,outputDir,fullFilename,equationText,newSize(2)/scale,newSize(1)/scale)
         else
             % Rendering failed.  Add error message.
@@ -885,7 +885,7 @@ if isempty(tempfigure)
         'XLim',[0 1],'ylim',[0 1], ...
         'Visible','off');
     temptext = text('Parent',tempaxes,'Position',[.5 .5], ...
-        'HorizontalAlignment','center','FontSize',30, ...
+        'HorizontalAlignment','center','FontSize',26, ...
         'Interpreter','latex');
 else
     % Use existing figure.

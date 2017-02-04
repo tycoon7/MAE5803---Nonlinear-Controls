@@ -82,7 +82,7 @@ title('Nonlinear system phase portrait, $\mu = 0$')
 hold off
 
 %% Singular Point, $\mu = 0$
-% The singular point at the origin is an unstable node. Use the
+% The singular point is on the origin. Use the
 % Jacobian to linearize about this point. One eigenvalue at the origin of
 % the complex plane with no negative eigenvalues means the stability of the
 % system cannot be determined by the eigenvalues alone. From the phase
@@ -127,11 +127,9 @@ hold off
 %% d) Comments
 % What phenomenon do you observe as the parameter, $\mu$, varies as in the above? Explain the reason for your answer.
 %
-% Because $\dot{x}_2 = -x_2$ always, it is clear the slope towards the
-% horizontal axis decays exponentially in all scenarios. Effectively, $\mu$
-% changes the initial rate of change of the solution in the negative 
-% $x_1$-direction which becomes more negative as the function moves away
-% from the vertical axis. Thus, decreasing $\mu$ serves to increase the
-% initial rate of change in the negative $x_1$-direction and the singular
-% points first merge at the origin, then move quickly in the negative 
-% $x_1$-direction together.
+% For $/mu < 0$, There are no singular points. This is an example of
+% bifurcation. Bifurcation occurs when a small, smooth change made to the
+% parameter value(s) of a system causes a sudden qualitative or topological
+% change in its behavior. The infinitesimal change from positive to
+% negative $\mu$ causes the drastic change to the system stability shown in
+% the phase portraits.

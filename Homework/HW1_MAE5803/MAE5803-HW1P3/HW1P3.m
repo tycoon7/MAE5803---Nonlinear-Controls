@@ -76,10 +76,11 @@ end
 %
 % From the plot of eigenvalues, it can be seen, as $\mu$ goes from negative
 % to positive, the real part of the eigenvalues moves from positive to
-% negative. Thus, the system transitions from locally asymptotically stable
-% to locally unstable. At $\mu = 0$, the eigenvalues have real parts equal
+% negative even as the equilibrium point remains on the origin. Thus, the
+% stability of origin transitions from locally asymptotically stable to
+% unstable. At $\mu = 0$, the eigenvalues have real parts equal
 % to zero and stability is not concluded by eigenvalue analysis, but the 
-% phase portrait reveals the system is stable at this point.
+% phase portrait reveals the origin is stable in this system.
 %
 % Poincare-Bendixson Theorem: If a trajectory of a second-order autonomous system remains in a finite region ($\Omega$), then one of the following is true:
 %
@@ -87,13 +88,5 @@ end
 % # The trajectory tends to a stable limit cycle
 % # The trajectory itself is a limit cycle
 %
-% Consider the region defined by the ball centered on the origin with a
-% radius greater than the distance from the origin to the initial point.
-% The system with negative real parts to all eigenvalues goes towards the
-% equilibrium point at the origin. The system with zero real parts to the
-% eigenvalues are found to act in the same way by observing the phase
-% portrait. Both of these systems have trajectories tending toward an
-% equilibrium point.
-% For the system with positive eigenvalues, the radius in the phase
-% portrait increases without bound. Thus, there is no region in which these
-% trajectories are contained and Poincare-Bendixson Theorem does not apply.
+% The system having $\mu > 0$ is unstable at the origin, by Slotine-Li
+% Definition 3.3.
