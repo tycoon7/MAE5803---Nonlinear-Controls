@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>MAE 5803 - Homework #2 Problem #2</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-02-05"><meta name="DC.source" content="HW2P2.m"><style type="text/css">
+      --><title>MAE 5803 - Homework #2 Problem #2</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-02-08"><meta name="DC.source" content="HW2P2.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,24 +66,77 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>MAE 5803 - Homework #2 Problem #2</h1><!--introduction--><p>Tim Coon: 9, February 2017</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Equilibrium Points and Stability</a></li><li><a href="#3">Eqn #1:</a></li><li><a href="#4">Eqn #2:</a></li><li><a href="#5">Eqn #3:</a></li><li><a href="#6">Eqn #4:</a></li><li><a href="#7">Eqn #5:</a></li><li><a href="#8">Plots</a></li></ul></div><pre class="codeinput">clear; close <span class="string">all</span>; clc;
-</pre><h2>Equilibrium Points and Stability<a name="2"></a></h2><p>Fo the following systems, find the equilibrium points and determine their stability. Indicate if the stability is asymptotic and if it is global.</p><p><img src="HW2P2_eq18083055376757207829.png" alt="$$ \dot{x} = -x^3 + \sin^{4}(x) $$"></p><p><img src="HW2P2_eq12401759352031630796.png" alt="$$ \dot{x} = (5-x)^5 $$"></p><p><img src="HW2P2_eq16254374972486762291.png" alt="$$ \ddot{x} + \dot{x}^5 + x^7 = x^2\sin^{8}(x)\cos^2(3x) $$"></p><p><img src="HW2P2_eq11771022680480289291.png" alt="$$ \ddot{x} + (x-1)^4\dot{x}^7 + x^5 = x^3\sin^{3}(x) $$"></p><p><img src="HW2P2_eq04044021949198650401.png" alt="$$ \ddot{x} + (x-1)^2\dot{x}^7 + x = \sin\frac{\pi x}{2} $$"></p><h2>Eqn #1:<a name="3"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq18083055376757207829.png" alt="$$ \dot{x} = -x^3 + \sin^{4}(x) $$"></p><h2>Eqn #2:<a name="4"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq12401759352031630796.png" alt="$$ \dot{x} = (5-x)^5 $$"></p><h2>Eqn #3:<a name="5"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq15843985084320565843.png" alt="$$ \dot{x_1} = x_2 $$"></p><p><img src="HW2P2_eq17077551082524953261.png" alt="$$ \dot{x_2} = x_1^2\sin^{8}(x_1)\cos^2(3x_1) - x_1^7 - x_2 $$"></p><h2>Eqn #4:<a name="6"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq15843985084320565843.png" alt="$$ \dot{x_1} = x_2 $$"></p><p><img src="HW2P2_eq01629676058355740109.png" alt="$$ \dot{x_2} = x_1^3\sin^3(x_1) - (x_1-1)^4x_2^7 - x_1^5 $$"></p><h2>Eqn #5:<a name="7"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq15843985084320565843.png" alt="$$ \dot{x_1} = x_2 $$"></p><p><img src="HW2P2_eq00926977788033732046.png" alt="$$ \dot{x_2} = \sin\frac{\pi x_1}{2} - (x_1-1)^2x_2^7 - x_1 $$"></p><h2>Plots<a name="8"></a></h2><p>The 2-dimensional function is plotted for the specified region by simply limiting the region in the tangential direction and viewing normal to the x1-x2 plane.</p><pre class="codeinput"><span class="keyword">for</span> i = 1: length(f)
-    figure(i);
-    fsurf(f(i,1))
-    xlim([-2 2]); ylim([-2 2]); zlim([0 1]);
-    view(2)
-    title(f{i,2},<span class="string">'Interpreter'</span>,<span class="string">'tex'</span>)
-<span class="keyword">end</span>
-</pre><pre class="codeoutput error">Undefined function or variable 'f'.
+  </style></head><body><div class="content"><h1>MAE 5803 - Homework #2 Problem #2</h1><!--introduction--><p>Tim Coon: 9, February 2017</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#2">Set default figure properties</a></li><li><a href="#3">Equilibrium Points and Stability</a></li><li><a href="#4">Eqn #1:</a></li><li><a href="#5">Eqn #2:</a></li><li><a href="#6">Eqn #3:</a></li><li><a href="#7">Eqn #4:</a></li><li><a href="#8">Eqn #5:</a></li></ul></div><pre class="codeinput">clear; close <span class="string">all</span>; clc;
+</pre><h2>Set default figure properties<a name="2"></a></h2><pre class="codeinput">set(0,<span class="string">'defaultlinelinewidth'</span>,2.5)
+set(0,<span class="string">'defaultaxeslinewidth'</span>,2.5)
+set(0,<span class="string">'defaultpatchlinewidth'</span>,2.5)
+set(0,<span class="string">'defaulttextfontsize'</span>,14)
+set(0,<span class="string">'defaultaxesfontsize'</span>,14)
+set(0,<span class="string">'defaultTextInterpreter'</span>,<span class="string">'latex'</span>)
+</pre><h2>Equilibrium Points and Stability<a name="3"></a></h2><p>Fo the following systems, find the equilibrium points and determine their stability. Indicate if the stability is asymptotic and if it is global.</p><p><img src="HW2P2_eq18083055376757207829.png" alt="$$ \dot{x} = -x^3 + \sin^{4}(x) $$"></p><p><img src="HW2P2_eq12401759352031630796.png" alt="$$ \dot{x} = (5-x)^5 $$"></p><p><img src="HW2P2_eq16254374972486762291.png" alt="$$ \ddot{x} + \dot{x}^5 + x^7 = x^2\sin^{8}(x)\cos^2(3x) $$"></p><p><img src="HW2P2_eq11771022680480289291.png" alt="$$ \ddot{x} + (x-1)^4\dot{x}^7 + x^5 = x^3\sin^{3}(x) $$"></p><p><img src="HW2P2_eq04044021949198650401.png" alt="$$ \ddot{x} + (x-1)^2\dot{x}^7 + x = \sin\frac{\pi x}{2} $$"></p><h2>Eqn #1:<a name="4"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq18083055376757207829.png" alt="$$ \dot{x} = -x^3 + \sin^{4}(x) $$"></p><p>This system has an equilibrium point at <img src="HW2P2_eq17014082639638836868.png" alt="$x=0$">. It is an asymptotically stable node. <img src="HW2P2_eq11772391578824188360.png" alt="$\dot{x}$"> is positive whenever <img src="HW2P2_eq12428413953531653171.png" alt="$x$"> is negative and vice versa as seen in the phase plane plot. To be sure it does not oscillate unbounded, look at the candidate Lyapunov function as it satisfies all conditions for global asymptotic stability.</p><p><img src="HW2P2_eq13318360255574050418.png" alt="$$       V(\mathbf{x}) &gt; 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$"></p><p><img src="HW2P2_eq08328822860382275372.png" alt="$$ \dot{V}(\mathbf{x}) < 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$"></p><p><img src="HW2P2_eq15187066966781269707.png" alt="$$ V(\mathbf{x}) \rightarrow \infty $$ as $$ \|\mathbf{x}\| \rightarrow \infty $$"></p><p>The Lyapunov function is:</p><p><img src="HW2P2_eq03780284734959692282.png" alt="$$ V = x^2 $$"></p><p><img src="HW2P2_eq09488011817743831903.png" alt="$$ \dot{V}(x) = 2x\dot{x} = 2x(-x^3+sin^4(x)) \leq 0 $$"></p><pre class="codeinput">figure()
+ezplot(<span class="string">'-x^3 + sin(x)^4'</span>)
+xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'dx'</span>);
+figure()
+ezplot(<span class="string">'2*x*(-x^3+sin(x)^4)'</span>)
+xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'dV/dt'</span>);
+</pre><img vspace="5" hspace="5" src="HW2P2_01.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_02.png" alt=""> <h2>Eqn #2:<a name="5"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq12401759352031630796.png" alt="$$ \dot{x} = (5-x)^5 $$"></p><p>This system has an equilibrium point at <img src="HW2P2_eq15296513798831235302.png" alt="$x=5$">. It is an unstable node as evidenced by using the candidate Lyapunov function to show violation of Theorem 3.2. Clearly, <img src="HW2P2_eq17718918426427499022.png" alt="$\dot{V}(x)$"> is not negative semidefinite.</p><p>The Lyapunov function is:</p><p><img src="HW2P2_eq03780284734959692282.png" alt="$$ V = x^2 $$"></p><p><img src="HW2P2_eq10236265276192729766.png" alt="$$ \dot{V}(x) = 2x\dot{x} = 2x(5-x)^5 $$"></p><pre class="codeinput">figure()
+ezplot(<span class="string">'(5-x)^5'</span>)
+xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'dx/dt'</span>);
+figure()
+ezplot(<span class="string">'2*x*(5-x)^5'</span>)
+axis([-10 10 -1000 1000])
+xlabel(<span class="string">'x'</span>); ylabel(<span class="string">'dV/dt'</span>);
+</pre><img vspace="5" hspace="5" src="HW2P2_03.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_04.png" alt=""> <h2>Eqn #3:<a name="6"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq15843985084320565843.png" alt="$$ \dot{x_1} = x_2 $$"></p><p><img src="HW2P2_eq08874935680797423472.png" alt="$$ \dot{x_2} = x_1^2\sin^{8}(x_1)\cos^2(3x_1) - x_1^7 - x_2^5 $$"></p><p>This system has an equilibrium point at the origin. It is an unstable node. The phase portrait shows the origin is an equilibrium point. The Lyapunov function is positive definite in a ball about the origin. The time derivative of the lyapunov function in a ball about the origin is not negative semidefinite as revealed by the plots below showing the <img src="HW2P2_eq04767974588365687822.png" alt="$\dot{V}$"> zero-plane intersection and a 3D surface plot revealing the positive values arbitrarily close to the origin.</p><p>The Lyapunov function is:</p><p><img src="HW2P2_eq16079142719949337458.png" alt="$$ V(\mathbf{x}) = x_1^2 + x_2^2 $$"></p><p><img src="HW2P2_eq00140574367281670475.png" alt="$$ \dot{V}(\mathbf{x}) = 2x_1x_2+2x_2(x_1^2\sin(x_1)^8\cos(3x_1)^2-x_1^7-x_2) $$"></p><pre class="codeinput">HW1P2_plotPhasePortrait(3,[0 100],[-1 1],[-1 1],<span class="string">'System \#3'</span>)
 
-Error in HW2P2 (line 58)
-for i = 1: length(f)
-</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+figure
+set(0,<span class="string">'DefaultTextInterpreter'</span>,<span class="string">'tex'</span>)
+ezplot(<span class="string">'2*x1*x2+2*x2*(x1^2*sin(x1)^8*cos(3*x1)^2-x1^7-x2^5)'</span>);
+figure
+ezsurf(<span class="string">'2*x1*x2+2*x2*(x1^2*sin(x1)^8*cos(3*x1)^2-x1^7-x2^5)'</span>)
+hold <span class="string">on</span>
+ezsurf(<span class="string">'0'</span>)
+hold <span class="string">off</span>
+xlabel(<span class="string">'x1'</span>); ylabel(<span class="string">'x2'</span>);
+title(<span class="string">'$\dot{V}(x)$'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+zlim([-1 1])
+</pre><img vspace="5" hspace="5" src="HW2P2_05.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_06.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_07.png" alt=""> <h2>Eqn #4:<a name="7"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq15843985084320565843.png" alt="$$ \dot{x_1} = x_2 $$"></p><p><img src="HW2P2_eq01629676058355740109.png" alt="$$ \dot{x_2} = x_1^3\sin^3(x_1) - (x_1-1)^4x_2^7 - x_1^5 $$"></p><p>The phase portrait suggests one equilibrium point is at least locally stable as all trajectories appear to converge on the origin. The Lyapunov function is positive definite in a ball about the origin. The time derivative of the lyapunov function in a ball about the origin is not negative semidefinite. The equilibrium point is unstable.</p><p>The Lyapunov function is:</p><p><img src="HW2P2_eq16079142719949337458.png" alt="$$ V(\mathbf{x}) = x_1^2 + x_2^2 $$"></p><p><img src="HW2P2_eq07321481784098964250.png" alt="$$ \dot{V}(\mathbf{x}) = 2x_1x_2+2x_2(x_1^3sin(x_1)^3-(x_1-1)^4x_2^7-x_1^5) $$"></p><pre class="codeinput">HW1P2_plotPhasePortrait(4,[0 20],[-2 2],[-2 2],<span class="string">'System \#4'</span>)
+figure
+set(0,<span class="string">'DefaultTextInterpreter'</span>,<span class="string">'tex'</span>)
+ezplot(<span class="string">'x1*x2 + x2^2 + (x1+x2)*(x1^3*sin(x1)^3-(x1-1)^4*x2^7-x1^5)'</span>)
+figure
+ezsurf(<span class="string">'x1*x2 + x2^2 + (x1+x2)*(x1^3*sin(x1)^3-(x1-1)^4*x2^7-x1^5)'</span>)
+hold <span class="string">on</span>
+ezsurf(<span class="string">'0'</span>)
+hold <span class="string">off</span>
+xlabel(<span class="string">'x1'</span>); ylabel(<span class="string">'x2'</span>);
+title(<span class="string">'$\dot{V}(x)$'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+zlim([-1 1])
+</pre><img vspace="5" hspace="5" src="HW2P2_08.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_09.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_10.png" alt=""> <h2>Eqn #5:<a name="8"></a></h2><p>First-order state equation</p><p><img src="HW2P2_eq15843985084320565843.png" alt="$$ \dot{x_1} = x_2 $$"></p><p><img src="HW2P2_eq00926977788033732046.png" alt="$$ \dot{x_2} = \sin\frac{\pi x_1}{2} - (x_1-1)^2x_2^7 - x_1 $$"></p><p><img src="HW2P2_eq17180805478116785291.png" alt="$$ V_1(\mathbf{x}) = ((x_1-1)^2 + x_2^2 - 1)^2 $$"></p><p><img src="HW2P2_eq09980197748041865906.png" alt="$$ V_2(\mathbf{x}) = ((x_1+1)^2 + x_2^2 - 1)^2 $$"></p><p>The phase portrait suggests two equilibrium points at least locally stable as all trajectories appear to converge. The Lyapunov functions positive definite in region <img src="HW2P2_eq11653679941018463052.png" alt="$\Omega_l$">. However, <img src="HW2P2_eq04767974588365687822.png" alt="$\dot{V}$"> is not negative semidefinite <img src="HW2P2_eq08176689441369503409.png" alt="$\forall \quad x$"> in <img src="HW2P2_eq11653679941018463052.png" alt="$\Omega_l$">. The equilibrium point is, therefore, unstable.</p><pre class="codeinput">HW1P2_plotPhasePortrait(5,[0 5],[-2 2],[-2 2],<span class="string">'System \#5'</span>)
+figure
+set(0,<span class="string">'DefaultTextInterpreter'</span>,<span class="string">'tex'</span>)
+ezplot(<span class="string">'x2*(x1 + 1) - x2*(x1 - sin((pi*x1)/2) + x2^7*(x1 - 1)^2)'</span>)
+figure
+ezsurf(<span class="string">'x2*(x1 + 1) - x2*(x1 - sin((pi*x1)/2) + x2^7*(x1 - 1)^2)'</span>)
+hold <span class="string">on</span>
+ezsurf(<span class="string">'0'</span>)
+hold <span class="string">off</span>
+xlabel(<span class="string">'x1'</span>); ylabel(<span class="string">'x2'</span>);
+title(<span class="string">'$\dot{V}(x)$'</span>,<span class="string">'Interpreter'</span>,<span class="string">'latex'</span>)
+zlim([-1 1])
+</pre><img vspace="5" hspace="5" src="HW2P2_11.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_12.png" alt=""> <img vspace="5" hspace="5" src="HW2P2_13.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% MAE 5803 - Homework #2 Problem #2
 % Tim Coon: 9, February 2017
 %%
 clear; close all; clc;
+
+%% Set default figure properties
+set(0,'defaultlinelinewidth',2.5)
+set(0,'defaultaxeslinewidth',2.5)
+set(0,'defaultpatchlinewidth',2.5)
+set(0,'defaulttextfontsize',14)
+set(0,'defaultaxesfontsize',14)
+set(0,'defaultTextInterpreter','latex')
 
 %% Equilibrium Points and Stability
 % Fo the following systems, find the equilibrium points and determine their
@@ -104,19 +157,91 @@ clear; close all; clc;
 % First-order state equation
 %
 % $$ \dot{x} = -x^3 + \sin^{4}(x) $$
+%
+% This system has an equilibrium point at $x=0$. It is an asymptotically
+% stable node. $\dot{x}$ is positive whenever $x$ is negative and vice
+% versa as seen in the phase plane plot. To be sure it does not oscillate
+% unbounded, look at the candidate Lyapunov function as it 
+% satisfies all conditions for global asymptotic stability.
+%
+% $$       V(\mathbf{x}) > 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$
+%
+% $$ \dot{V}(\mathbf{x}) < 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$
+%
+% $$ V(\mathbf{x}) \rightarrow \infty $$ as $$ \|\mathbf{x}\| \rightarrow \infty $$
+%
+% The Lyapunov function is:
+%
+% $$ V = x^2 $$
+%
+% $$ \dot{V}(x) = 2x\dot{x} = 2x(-x^3+sin^4(x)) \leq 0 $$
+
+figure()
+ezplot('-x^3 + sin(x)^4')
+xlabel('x'); ylabel('dx');
+figure()
+ezplot('2*x*(-x^3+sin(x)^4)')
+xlabel('x'); ylabel('dV/dt');
 
 
 %% Eqn #2:
 % First-order state equation
 %
 % $$ \dot{x} = (5-x)^5 $$
+%
+% This system has an equilibrium point at $x=5$. It is an unstable node as
+% evidenced by using the candidate Lyapunov function to show violation of
+% Theorem 3.2. Clearly, $\dot{V}(x)$ is not negative semidefinite.
+%
+% The Lyapunov function is:
+%
+% $$ V = x^2 $$
+%
+% $$ \dot{V}(x) = 2x\dot{x} = 2x(5-x)^5 $$
+
+figure()
+ezplot('(5-x)^5')
+xlabel('x'); ylabel('dx/dt');
+figure()
+ezplot('2*x*(5-x)^5')
+axis([-10 10 -1000 1000])
+xlabel('x'); ylabel('dV/dt');
+
 
 %% Eqn #3:
 % First-order state equation
 %
 % $$ \dot{x_1} = x_2 $$
 %
-% $$ \dot{x_2} = x_1^2\sin^{8}(x_1)\cos^2(3x_1) - x_1^7 - x_2 $$
+% $$ \dot{x_2} = x_1^2\sin^{8}(x_1)\cos^2(3x_1) - x_1^7 - x_2^5 $$
+%
+% This system has an equilibrium point at the origin. It is an
+% unstable node. The phase portrait shows the origin is an equilibrium
+% point. The Lyapunov function is positive definite in a ball about the
+% origin. The time derivative of the lyapunov function in a ball about the
+% origin is not negative semidefinite as revealed by the plots below
+% showing the $\dot{V}$ zero-plane intersection and a 3D surface plot
+% revealing the positive values arbitrarily close to the origin.
+%
+% The Lyapunov function is:
+%
+% $$ V(\mathbf{x}) = x_1^2 + x_2^2 $$
+%
+% $$ \dot{V}(\mathbf{x}) = 2x_1x_2+2x_2(x_1^2\sin(x_1)^8\cos(3x_1)^2-x_1^7-x_2) $$
+HW1P2_plotPhasePortrait(3,[0 100],[-1 1],[-1 1],'System \#3')
+
+figure
+set(0,'DefaultTextInterpreter','tex')
+ezplot('2*x1*x2+2*x2*(x1^2*sin(x1)^8*cos(3*x1)^2-x1^7-x2^5)');
+figure
+ezsurf('2*x1*x2+2*x2*(x1^2*sin(x1)^8*cos(3*x1)^2-x1^7-x2^5)')
+hold on
+ezsurf('0')
+hold off
+xlabel('x1'); ylabel('x2');
+title('$\dot{V}(x)$','Interpreter','latex')
+zlim([-1 1])
+
 
 %% Eqn #4:
 % First-order state equation
@@ -124,6 +249,30 @@ clear; close all; clc;
 % $$ \dot{x_1} = x_2 $$
 %
 % $$ \dot{x_2} = x_1^3\sin^3(x_1) - (x_1-1)^4x_2^7 - x_1^5 $$
+%
+% The phase portrait suggests one equilibrium point is at least locally
+% stable as all trajectories appear to converge on the origin. The Lyapunov
+% function is positive definite in a ball about the origin. The time 
+% derivative of the lyapunov function in a ball about the origin is not 
+% negative semidefinite. The equilibrium point is unstable.
+%
+% The Lyapunov function is:
+%
+% $$ V(\mathbf{x}) = x_1^2 + x_2^2 $$
+%
+% $$ \dot{V}(\mathbf{x}) = 2x_1x_2+2x_2(x_1^3sin(x_1)^3-(x_1-1)^4x_2^7-x_1^5) $$
+HW1P2_plotPhasePortrait(4,[0 20],[-2 2],[-2 2],'System \#4')
+figure
+set(0,'DefaultTextInterpreter','tex')
+ezplot('x1*x2 + x2^2 + (x1+x2)*(x1^3*sin(x1)^3-(x1-1)^4*x2^7-x1^5)')
+figure
+ezsurf('x1*x2 + x2^2 + (x1+x2)*(x1^3*sin(x1)^3-(x1-1)^4*x2^7-x1^5)')
+hold on
+ezsurf('0')
+hold off
+xlabel('x1'); ylabel('x2');
+title('$\dot{V}(x)$','Interpreter','latex')
+zlim([-1 1])
 
 %% Eqn #5:
 % First-order state equation
@@ -131,19 +280,29 @@ clear; close all; clc;
 % $$ \dot{x_1} = x_2 $$
 %
 % $$ \dot{x_2} = \sin\frac{\pi x_1}{2} - (x_1-1)^2x_2^7 - x_1 $$
-
-%% Plots
-% The 2-dimensional function is plotted for the specified region by simply
-% limiting the region in the tangential direction and viewing normal to the
-% x1-x2 plane.
 %
-for i = 1: length(f)
-    figure(i);
-    fsurf(f(i,1))
-    xlim([-2 2]); ylim([-2 2]); zlim([0 1]);
-    view(2)
-    title(f{i,2},'Interpreter','tex')
-end
+% $$ V_1(\mathbf{x}) = ((x_1-1)^2 + x_2^2 - 1)^2 $$
+%
+% $$ V_2(\mathbf{x}) = ((x_1+1)^2 + x_2^2 - 1)^2 $$
+%
+% The phase portrait suggests two equilibrium points at least locally
+% stable as all trajectories appear to converge. The Lyapunov
+% functions positive definite in region $\Omega_l$. However, $\dot{V}$ is  
+% not negative semidefinite $\forall \quad x$ in $\Omega_l$. The 
+% equilibrium point is, therefore, unstable.
+
+HW1P2_plotPhasePortrait(5,[0 5],[-2 2],[-2 2],'System \#5')
+figure
+set(0,'DefaultTextInterpreter','tex')
+ezplot('x2*(x1 + 1) - x2*(x1 - sin((pi*x1)/2) + x2^7*(x1 - 1)^2)')
+figure
+ezsurf('x2*(x1 + 1) - x2*(x1 - sin((pi*x1)/2) + x2^7*(x1 - 1)^2)')
+hold on
+ezsurf('0')
+hold off
+xlabel('x1'); ylabel('x2');
+title('$\dot{V}(x)$','Interpreter','latex')
+zlim([-1 1])
 
 ##### SOURCE END #####
 --></body></html>
