@@ -31,23 +31,19 @@ set(0,'defaultTextInterpreter','latex')
 %
 % $$ \dot{x} = -x^3 + \sin^{4}(x) $$
 %
-% This system has an equilibrium point at $x=0$. It is an asymptotically
-% stable node. $\dot{x}$ is positive whenever $x$ is negative and vice
-% versa as seen in the phase plane plot. To be sure it does not oscillate
-% unbounded, look at the candidate Lyapunov function as it 
-% satisfies all conditions for global asymptotic stability.
+% This system has an equilibrium point at $x=0$. Apply Theorem 3.3 to find 
+% it is a globally asymptotically stable. $\dot{V}(x)$ is negative definite
+% because $x^4 > x\sin^4(x)$
 %
-% $$       V(\mathbf{x}) > 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$
-%
-% $$ \dot{V}(\mathbf{x}) < 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$
-%
-% $$ V(\mathbf{x}) \rightarrow \infty $$ as $$ \|\mathbf{x}\| \rightarrow \infty $$
+% # $$ V(\mathbf{x}) > 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$
+% # $$ \dot{V}(\mathbf{x}) < 0 \quad \forall \quad \mathbf{x} \neq \mathbf{0} $$
+% # $$ V(\mathbf{x}) \rightarrow \infty $$ as $$ \|\mathbf{x}\| \rightarrow \infty $$
 %
 % The Lyapunov function is:
 %
 % $$ V = x^2 $$
 %
-% $$ \dot{V}(x) = 2x\dot{x} = 2x(-x^3+sin^4(x)) \leq 0 $$
+% $$ \dot{V}(x) = 2x\dot{x} = 2x(-x^3+\sin^4(x)) \leq 0 $$
 
 figure()
 ezplot('-x^3 + sin(x)^4')
