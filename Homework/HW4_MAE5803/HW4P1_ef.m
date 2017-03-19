@@ -30,11 +30,11 @@ for i1 = 1:length(lambda)
         xd_dot = 2*cos(t);
         x1_tilde = x1 - xd;
         % Calc s and phi again (I haven't found a better way to do this yet)
-        clear s phi u Fd
+        clear s phi u kd
         for i3 = 1:length(t)
-            [~,s(i3),phi(i3),u(i3),Fd(i3)] = slidingEOM_VaryMass(t(i3),X(i3,:),m_hat,alpha1_hat,alpha2_hat,d_hat,eta(i2),lambda(i1));
+            [~,s(i3),phi(i3),u(i3),kd(i3)] = slidingEOM_VaryMass(t(i3),X(i3,:),m_hat,alpha1_hat,alpha2_hat,d_hat,eta(i2),lambda(i1));
         end
-        x_tilde_bound = Fd/lambda(i1)^n;
+        x_tilde_bound = kd/lambda(i1);
         %% Plots
         figure(casenum)
         suptitle(['$\lambda = $' num2str(lambda(i1)) ', $\eta = $' num2str(eta(i2))]);
@@ -66,7 +66,7 @@ end
 end
 
 %% Equation of Motion
-function [dx, s, phi, u, Fd] = slidingEOM_VaryMass(t,x,m_hat,a1_hat,a2_hat,d_hat,eta,lambda)
+function [dx, s, phi, u, kd] = slidingEOM_VaryMass(t,x,m_hat,a1_hat,a2_hat,d_hat,eta,lambda)
 dx = zeros(size(x));
 x1 = x(1);
 x2 = x(2);
@@ -88,10 +88,10 @@ F = abs(f-f_hat);
 Fd = abs(fd-fd_hat);
 k = F + eta;
 kd = Fd + eta;
-phi = 0.1;
+% phi = 0.1;
 % phi = kd/lambda;
-phi_dot = 0;
-% phi_dot = kd - lambda*phi;
+% phi_dot = 0;
+phi_dot = kd - lambda*phi;
 s = x2 - xd_dot + lambda*(x1-xd);
 u_hat = -f_hat + xd_dd - lambda*(x2-xd_dot);
 

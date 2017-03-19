@@ -36,7 +36,7 @@ for i1 = 1:length(lambda)
             [~,s(i3),phi(i3),u(i3),kd(i3)] = slidingEOM_ConstMass(t(i3),...
                 X(i3,:),m,alpha1_hat,alpha2_hat,d_hat,eta(i2),lambda(i1));
         end
-        x_tilde_bound = kd/lambda(i1)^n;
+        x_tilde_bound = kd/lambda(i1);
 
         %% Plots
         fh = figure(casenum);
