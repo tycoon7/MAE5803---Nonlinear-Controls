@@ -19,7 +19,7 @@ lambda = [2*pi*omega_avoid/3 2*pi*omega_avoid/5];
 eta = [1 10];
 
 tspan = [0 6];
-X0 = [1; 0; 0];
+X0 = [0.1; 0; 0];
 for i1 = 1:length(lambda)
     for i2 = 1:length(eta)
         casenum = 2*(i1-1) + i2;
@@ -95,7 +95,7 @@ s = x2 - xd_dot + lambda*(x1-xd);
 u_hat = -f_hat + xd_dd - lambda*(x2-xd_dot);
 
 if abs(s) >= phi
-    u = u_hat - (k-phi_dot)*sign(s);
+    u = u_hat - k*sign(s);
 else
     u = u_hat - (k-phi_dot)*(s/phi);
 end

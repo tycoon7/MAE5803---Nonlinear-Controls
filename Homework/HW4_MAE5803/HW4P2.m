@@ -13,7 +13,7 @@ eta = 1;
 tspan = [0 6];
 
 %% Integrate
-X0 = [1; 0; 0];
+X0 = [0.1; 0; 0];
 [t,X] = ode45(@P2switchingEOM,tspan,X0,[],alpha1_hat,alpha2_hat,eta,lambda);
 x1 = X(:,1);
 u = X(:,3);
