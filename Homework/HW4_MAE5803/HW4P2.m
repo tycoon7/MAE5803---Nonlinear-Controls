@@ -1,4 +1,4 @@
-%% MAE5903 - HW#4 Part 2 Switching Controller
+%% MAE5803 - HW#4 Part 2 Switching Controller
 function HW4P2()
 
 %% Given
@@ -13,13 +13,11 @@ eta = 1;
 tspan = [0 6];
 
 %% Integrate
-X0 = [0; 0; 0];
+X0 = [1; 0; 0];
 [t,X] = ode45(@P2switchingEOM,tspan,X0,[],alpha1_hat,alpha2_hat,eta,lambda);
 x1 = X(:,1);
-x2 = X(:,2);
 u = X(:,3);
 xd = 2*sin(t);
-xd_dot = 2*cos(t);
 x1_tilde = x1 - xd;
 
 % Calc s and phi again (I haven't found a better way to do this yet)

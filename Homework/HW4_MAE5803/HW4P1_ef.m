@@ -1,4 +1,4 @@
-%% MAE5903 - HW#4 Part 1 Sliding Controller
+%% MAE5803 - HW#4 Part 1 Sliding Controller
 % Time-vary mass, Integrate phi
 function HW4P1_ef()
 
@@ -19,15 +19,13 @@ lambda = [2*pi*omega_avoid/3 2*pi*omega_avoid/5];
 eta = [1 10];
 
 tspan = [0 6];
-X0 = [0; 0; 0];
+X0 = [1; 0; 0];
 for i1 = 1:length(lambda)
     for i2 = 1:length(eta)
         casenum = 2*(i1-1) + i2;
         [t,X] = ode45(@slidingEOM_VaryMass,tspan,X0,[],m_hat,alpha1_hat,alpha2_hat,d_hat,eta(i2),lambda(i1));
         x1 = X(:,1);
-        x2 = X(:,2);
         xd = 2*sin(t);
-        xd_dot = 2*cos(t);
         x1_tilde = x1 - xd;
         % Calc s and phi again (I haven't found a better way to do this yet)
         clear s phi u kd

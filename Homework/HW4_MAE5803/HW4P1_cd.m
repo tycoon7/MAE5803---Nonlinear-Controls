@@ -19,16 +19,14 @@ lambda = [2*pi*omega_avoid/5 2*pi*omega_avoid/3];
 
 %% Integrate
 tspan = [0 6];
-X0 = [0; 0; 0];
+X0 = [1; 0; 0];
 for i1 = 1:length(lambda)
     for i2 = 1:length(eta)
         casenum = 2*(i1-1) + i2;
         [t,X] = ode45(@slidingEOM_ConstMass,tspan,X0,[],...
                         m,alpha1_hat,alpha2_hat,d_hat,eta(i2),lambda(i1));
         x1 = X(:,1);
-        x2 = X(:,2);
         xd = 2*sin(t);
-        xd_dot = 2*cos(t);
         x1_tilde = x1 - xd;
         % Calc s and phi again (I haven't found a better way to do this yet)
         clear s phi u kd

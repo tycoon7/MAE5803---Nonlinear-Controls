@@ -17,14 +17,13 @@ options1 = struct('format','pdf','outputDir',[pwd '/HW4_pdfs']);
 
 %% Publish Problem #1ab
 publish('HW4P1_ab.m',options1);
-
+close all;
 %% Publish Problem #1cd
 publish('HW4P1_cd.m',options1);
-
+close all;
 %% Publish the Problem #1ef
 publish('HW4P1_ef.m',options1);
-
+close all;
 %% Publish the Problem #2
 publish('HW4P2.m',options1);
-
 close all

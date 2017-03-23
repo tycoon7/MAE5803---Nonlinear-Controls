@@ -8,7 +8,6 @@ alpha2_lims = [1 2];
 dlims = [-1 1];
 omega_avoid = 4.2;      % (rad/s)
 eta = [1 10];
-xd = @(t) 2*sin(t);
 
 % Choose parameters
 alpha1_hat = mean(alpha1_lims);
@@ -17,15 +16,12 @@ d_hat = mean(dlims);
 lambda = 2*pi*omega_avoid/3;
 
 tspan = [0 6];
-X0 = [0; 0];
+X0 = [1; 0];
 for i = 1:length(eta)
     [t,X] = ode45(@switchingEOM,tspan,X0,[],m,alpha1_hat,alpha2_hat,d_hat,eta(i),lambda);
     x1 = X(:,1);
-    x2 = X(:,2);
     xd = 2*sin(t);
-    xd_dot = 2*cos(t);
     x1_tilde = x1 - xd;
-    x2_tilde = x2 - xd_dot;
     % Calc s and phi again (I haven't found a better way to do this yet)
     for j = 1:length(t)
         [~,s(j),u(j)] = switchingEOM(t(j),X(j,:),m,alpha1_hat,alpha2_hat,d_hat,eta(i),lambda);
