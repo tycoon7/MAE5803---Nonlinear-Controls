@@ -34,7 +34,8 @@ for i1 = 1:length(lambda)
         end
         x_tilde_bound = kd/lambda(i1);
         %% Plots
-        figure(casenum)
+        fh = figure(casenum);
+        set(fh,'Position',[0 0 840 1050])
         suptitle(['$\lambda = $' num2str(lambda(i1)) ', $\eta = $' num2str(eta(i2))]);
         % Dynamics
         subplot(411)
