@@ -1,7 +1,7 @@
 %% MAE5903 - HW#4 Part 1 Switching Controller
 function HW4P1_ab()
 
-% Given
+%% Given Values
 m = 1;
 alpha1_lims = [4 6];
 alpha2_lims = [1 2];
@@ -9,12 +9,13 @@ dlims = [-1 1];
 omega_avoid = 4.2;      % (rad/s)
 eta = [1 10];
 
-% Choose parameters
+%% Choose parameters
 alpha1_hat = mean(alpha1_lims);
 alpha2_hat = mean(alpha2_lims);
 d_hat = mean(dlims);
 lambda = 2*pi*omega_avoid/3;
 
+%% Integrate
 tspan = [0 6];
 X0 = [1; 0];
 for i = 1:length(eta)
@@ -35,18 +36,16 @@ for i = 1:length(eta)
     plot(t,xd,t,x1)
     legend('Desired','Sumulated','location','southeast')
     xlabel('Time'); ylabel('Position');
-    
+    % s-Dynamics
     subplot(412)
     plot(t,s)
     title('s-dynamics')
     xlabel('Time'); ylabel('s');
-    
     % Error Plot
     subplot(413)
     plot(t,x1_tilde);
     title('Position Error')
     xlabel('Time'); ylabel('$\widetilde{x}_1$');
-    
     % Control Input
     subplot(414)
     plot(t,u);
@@ -54,8 +53,7 @@ for i = 1:length(eta)
     xlabel('Time'); ylabel('$u$');
 end
 end
-
-%% EOM
+%% Equation of Motion
 function [dx, s, u] = switchingEOM(t,x,m,a1_hat,a2_hat,d_hat,eta,lambda)
 dx = zeros(size(x));
 x1 = x(1);
@@ -63,7 +61,6 @@ x2 = x(2);
 xd = 2*sin(t);
 xd_dot = 2*cos(t);
 xd_dd = -2*sin(t);
-
 a1 = 5 + cos(t);
 a2 = 1 + abs(sin(2*t));
 d = cos(1.3*t);
@@ -74,7 +71,6 @@ F = abs(f-f_hat);
 k = F + eta;
 s = x2 - xd_dot + lambda*(x1-xd);
 u = -f_hat + xd_dd - lambda*(x2-xd_dot) - k*sign(s);
-
 dx(1) = x2;
 dx(2) = f + b*u;
 end

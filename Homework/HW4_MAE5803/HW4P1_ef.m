@@ -3,7 +3,6 @@
 function HW4P1_ef()
 
 % Given
-n = 2;
 m_lims = [1 2];
 alpha1_lims = [4 6];
 alpha2_lims = [1 2];
@@ -15,9 +14,9 @@ m_hat = mean(m_lims);
 alpha1_hat = mean(alpha1_lims);
 alpha2_hat = mean(alpha2_lims);
 d_hat = mean(dlims);
-lambda = [2*pi*omega_avoid/3 2*pi*omega_avoid/5];
+lambda = [2*pi*omega_avoid/5 2*pi*omega_avoid/3];
 eta = [1 10];
-
+%% Integrate
 tspan = [0 6];
 X0 = [0.1; 0; 0];
 for i1 = 1:length(lambda)
@@ -42,28 +41,23 @@ for i1 = 1:length(lambda)
         plot(t,xd,t,x1)
         legend('Desired','Sumulated','location','northeast')
         xlabel('Time'); ylabel('Position');
-
         % s-Dynamics
         subplot(412)
         plot(t,s,'b',t,phi,'r--',t,-phi,'r--')
-        title('s-dynamics')
+        legend('s-dynamics','\phi bounds','location','southeast')
         xlabel('Time'); ylabel('s');
-
         % Error Plot
         subplot(413)
         plot(t,x1_tilde,t,x_tilde_bound,'r--',t,-x_tilde_bound,'r--');
-        title('Position Error')
+        legend('Position Error','Pred Error Bounds','location','southeast')
         xlabel('Time'); ylabel('$\widetilde{x}_1$');
-
         % Control Input
         subplot(414)
         plot(t,u);
-        title('Control Input')
-        xlabel('Time'); ylabel('$u$');
+        xlabel('Time'); ylabel('Control Input $u$');
     end
 end
 end
-
 %% Equation of Motion
 function [dx, s, phi, u, kd] = slidingEOM_VaryMass(t,x,m_hat,a1_hat,a2_hat,d_hat,eta,lambda)
 dx = zeros(size(x));
@@ -73,7 +67,6 @@ phi = x(3);
 xd = 2*sin(t);
 xd_dot = 2*cos(t);
 xd_dd = -2*sin(t);
-
 m = 2 - abs(cos(1.5*t));
 a1 = 5 + cos(t);
 a2 = 1 + abs(sin(2*t));
@@ -93,15 +86,12 @@ kd = Fd + eta;
 phi_dot = kd - lambda*phi;
 s = x2 - xd_dot + lambda*(x1-xd);
 u_hat = -f_hat + xd_dd - lambda*(x2-xd_dot);
-
 if abs(s) >= phi
     u = u_hat - k*sign(s);
 else
     u = u_hat - (k-phi_dot)*(s/phi);
 end
-    
 dx(1) = x2;
 dx(2) = f + b*u;
 dx(3) = phi_dot;
-
 end
