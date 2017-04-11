@@ -1,5 +1,5 @@
 %% MAE5803 - HW#5 Part 2 Adaptive Controller
-function HW5P2()
+function HW5P2(D)
 
 % Choose parameters
 a1 = 2;
@@ -7,7 +7,7 @@ a2 = 5;
 P = 5*eye(2);
 lambda = 3;
 eta = 1;
-D = 0.5;
+% D = 0.5;
 d = @(t) D*sin(t);
 phi = 0.1;
 sat = @(x,delta) min(max(x/delta,-1),1);
@@ -22,12 +22,13 @@ a = [a1 a2];
 a_hat = [X(:,4) X(:,5)];
 fh = figure(1);
 set(fh,'Position',[0 0 799 1089])
-suptitle('HW1 Problem #1');
+suptitle(['HW5 Problem #2  D = ' num2str(D)]);
 % Dynamics
 subplot(211)
 plot(t,xd,t,x1)
 legend('Desired','Sumulated','location','southeast')
 xlabel('Time'); ylabel('Position');
+ylim([-1.5 1.5])
 % Parameter Estimate
 subplot(212)
 hold on

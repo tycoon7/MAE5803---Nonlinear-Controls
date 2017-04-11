@@ -20,7 +20,9 @@ for i = 1:length(t)
     [~,tau(:,i),q_err(:,i)] = EOM(t(i),X(i,:)',a,qd);
 end
 
-figure(1)
+fh = figure();
+set(fh,'Position',[0 0 799 789])
+suptitle('HW5 Problem #3a')
 subplot(221)
 plot(t,rad2deg(q_err(1,:)))
 xlabel('Position Error 1 (deg)'); ylabel('Time (s)')

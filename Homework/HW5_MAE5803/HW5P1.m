@@ -1,26 +1,29 @@
 %% MAE5803 - HW#5 Part 1 Adaptive Controller
-function HW5P1()
+function HW5P1(p,lambda,k)
 
 % Choose parameters
+% p = 1;
+P = p*eye(2);
+% lambda = 2;
+% k = 1;
+
+% Given
 a1 = 2;
 a2 = 5;
-p = 5;
-P = p*eye(2);
-lambda = 3;
-k = 1;
 
+% Integrate
 tspan = [0 20];
 X0 = zeros(1,5);
 [t,X] = ode45(@EOM,tspan,X0,[],a1,a2,P,lambda,k);
 
+% Plot
 xd = sin(0.8*t);
 x1 = X(:,1);
 a = [a1 a2];
 a_hat = [X(:,4) X(:,5)];
 fh = figure(1);
 set(fh,'Position',[0 0 799 1089])
-suptitle(['HW1 Problem #1' ...
-    ' p = ' num2str(p) ', \lambda = ' num2str(lambda) ', k = ' num2str(k)]);
+suptitle(['HW1 Problem #1' '   p = ' num2str(p) ', lam = ' num2str(lambda) ', k = ' num2str(k)]);
 % Dynamics
 subplot(211)
 plot(t,xd,t,x1)
