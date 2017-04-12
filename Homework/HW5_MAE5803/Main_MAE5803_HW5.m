@@ -13,39 +13,36 @@ set(0,'defaultaxesfontsize',14)
 set(0,'defaultTextInterpreter','latex')
 
 %% Set Options
-options1 = struct('format','pdf','outputDir',[pwd '/HW5_pdfs']);
+options1 = struct('format','pdf','outputDir',[pwd '/HW5P1_pdfs'],'evalCode',false);
+options2 = struct('format','pdf','outputDir',[pwd '/HW5P2_pdfs'],'evalCode',false);
+options3a = struct('format','pdf','outputDir',[pwd '/HW5P3a_pdfs'],'evalCode',false);
+options3b = struct('format','pdf','outputDir',[pwd '/HW5P3b_pdfs'],'evalCode',false);
 
 %% Publish Problem #1
-% publish('HW5P1.m',options1);
-p = [1 2];
-lambda = [1 2];
-k = [1 2];
-for i1 = 1:length(p)
-    for i2 = 1:length(lambda)
-        for i3 = 1:length(k)
-            HW5P1(p(i1),lambda(i2),k(i3))
-            figureName = ['HW1P1_p' num2str(p(i1)) '_lam' num2str(lambda(i2)) '_k' num2str(k(i3))];
-            print(['HW5P1_pdfs\' figureName],'-dpdf')
-        end
-    end
+publish('HW5P1.m',options1);
+plk = [1 1 1; 1 1 2; 1 2 1; 2 1 1];
+for i1 = 1:4
+    HW5P1(plk(i1,1),plk(i1,2),plk(i1,3))
+    figureName = ['HW5P1_p' num2str(plk(i1,1)) '_lam' num2str(plk(i1,2)) '_k' num2str(plk(i1,3))];
+    print(['HW5P1_pdfs\' figureName],'-dpdf','-fillpage')
 end
 close all;
 %% Publish Problem #2
-% publish('HW4P2.m',options1);
-D = [0.1 0.5 1.0];
+publish('HW5P2.m',options2);
+D = [0.5 1.0 2.0];
 for j1 = 1:length(D)
     HW5P2(D(j1))
     figureName = strrep(['HW5P2_D' num2str(D(j1))],'.','o');
-    print(['HW5P2_pdfs\' figureName],'-dpdf')
+    print(['HW5P2_pdfs\' figureName],'-dpdf','-fillpage')
 end
 close all;
 %% Publish the Problem #3a
-% publish('HW4P3a.m',options1);
+publish('HW5P3a.m',options3a);
 HW5P3a()
-figureName = 'HW5P3a';
-print(['HW5P3a_pdfs\' figureName],'-dpdf')
+figureName = 'HW5P3a PD Control';
+print(['HW5P3a_pdfs\' figureName],'-dpdf','-fillpage')
 close all;
 %% Publish the Problem #3b
-% publish('HW4P3b.m',options1);
+publish('HW5P3b.m',options3b);
 HW5P3b()
 close all;

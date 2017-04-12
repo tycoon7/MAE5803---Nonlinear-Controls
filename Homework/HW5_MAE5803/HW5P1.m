@@ -17,6 +17,10 @@ X0 = zeros(1,5);
 [t,X] = ode45(@EOM,tspan,X0,[],a1,a2,P,lambda,k);
 
 % Plot
+for i = 1:length(t)
+    [~, u(i)] = EOM(t(i),X(i,:),a1,a2,P,lambda,k);
+end
+
 xd = sin(0.8*t);
 x1 = X(:,1);
 a = [a1 a2];
@@ -25,25 +29,27 @@ fh = figure(1);
 set(fh,'Position',[0 0 799 1089])
 suptitle(['HW1 Problem #1' '   p = ' num2str(p) ', lam = ' num2str(lambda) ', k = ' num2str(k)]);
 % Dynamics
-subplot(211)
-plot(t,xd,t,x1)
+subplot(311)
+plot(t,xd,t,x1,'--')
 legend('Desired','Sumulated','location','southeast')
-xlabel('Time'); ylabel('Position');
+xlabel('Time'); ylabel('Position'); ylim([-2 1]);
 % Parameter Estimate
-subplot(212)
+subplot(312)
 hold on
 plot(t,a1*ones(size(t)),'b')
 plot(t,a2*ones(size(t)),'--r')
 plot(t,a_hat(:,1),'b')
 plot(t,a_hat(:,2),'--r')
-
-title('Parameter Estimates') 
-xlabel('Time'); ylabel('Value');
+title('Parameter Estimates'); xlabel('Time'); ylabel('Value'); ylim([0 6]);
+% Control Input
+subplot(313)
+plot(t,u)
+title('Control Input'); xlabel('Time'); ylabel('u'); ylim([-7 7]);
 
 end
 
 %% EOM
-function [dx] = EOM(t,x,a1,a2,P,lambda,k)
+function [dx, u] = EOM(t,x,a1,a2,P,lambda,k)
 dx = zeros(size(x));
 x1 = x(1);
 x2 = x(2);
@@ -56,7 +62,7 @@ xd_d   = 0.8*cos(0.8*t);
 xd_dd  = -0.64*sin(0.8*t);
 xd_ddd = -0.512*cos(0.8*t);
 
-xt    = x1 - xd
+xt    = x1 - xd;
 xt_d  = x2 - xd_d;
 xt_dd = x3 - xd_dd;
 
@@ -75,20 +81,3 @@ dx(4) = da_hat(1);
 dx(5) = da_hat(2);
 
 end
-
-%% Plots
-% function [] = makeplots()
-%     fh = figure();
-%     set(fh,'Position',[0 0 799 1089])
-%     suptitle(['$\eta = $' num2str(eta(cnt))]);
-%     % Dynamics
-%     subplot(411)
-%     plot(t,xd,t,x1)
-%     legend('Desired','Sumulated','location','southeast')
-%     xlabel('Time'); ylabel('Position');
-%     % Parameter Estimate
-%     subplot(412)
-%     plot(t,s)
-%     title('s-dynamics')
-%     xlabel('Time'); ylabel('s');
-% end

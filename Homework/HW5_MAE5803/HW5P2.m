@@ -15,7 +15,10 @@ sat = @(x,delta) min(max(x/delta,-1),1);
 tspan = [0 20];
 X0 = zeros(1,5);
 [t,X] = ode45(@EOM,tspan,X0,[],a1,a2,P,lambda,eta,D,d,phi,sat);
-
+% Plot
+for i = 1:length(t)
+    [~, u(i)] = EOM(t(i),X(i,:),a1,a2,P,lambda,eta,D,d,phi,sat);
+end
 xd = sin(0.8*t);
 x1 = X(:,1);
 a = [a1 a2];
@@ -24,26 +27,27 @@ fh = figure(1);
 set(fh,'Position',[0 0 799 1089])
 suptitle(['HW5 Problem #2  D = ' num2str(D)]);
 % Dynamics
-subplot(211)
-plot(t,xd,t,x1)
+subplot(311)
+plot(t,xd,t,x1,'--')
 legend('Desired','Sumulated','location','southeast')
-xlabel('Time'); ylabel('Position');
-ylim([-1.5 1.5])
+xlabel('Time'); ylabel('Position'); ylim([-1.5 1.5]);
 % Parameter Estimate
-subplot(212)
+subplot(312)
 hold on
-plot(t,a1*ones(size(t)),'b')        % actual a1
-plot(t,a2*ones(size(t)),'--r')      % actual a2
-plot(t,a_hat(:,1),'b')              % estimate a1
-plot(t,a_hat(:,2),'--r')            % estimate a2
-legend('a_1','a_2')
-title('Parameter Estimates') 
-xlabel('Time'); ylabel('Value');
+plot(t,a1*ones(size(t)),'b')
+plot(t,a2*ones(size(t)),'--r')
+plot(t,a_hat(:,1),'b')
+plot(t,a_hat(:,2),'--r')
+title('Parameter Estimates'); xlabel('Time'); ylabel('Value'); ylim([0 7]);
+% Control Input
+subplot(313)
+plot(t,u)
+title('Control Input'); xlabel('Time'); ylabel('u'); ylim([-7 7]);
 
 end
 
 %% EOM
-function [dx] = EOM(t,x,a1,a2,P,lambda,eta,D,d,phi,sat)
+function [dx, u] = EOM(t,x,a1,a2,P,lambda,eta,D,d,phi,sat)
 dx = zeros(size(x));
 x1 = x(1);
 x2 = x(2);
@@ -79,20 +83,3 @@ dx(4) = da_hat(1);
 dx(5) = da_hat(2);
 
 end
-
-%% Plots
-% function [] = makeplots()
-%     fh = figure();
-%     set(fh,'Position',[0 0 799 1089])
-%     suptitle(['$\eta = $' num2str(eta(cnt))]);
-%     % Dynamics
-%     subplot(411)
-%     plot(t,xd,t,x1)
-%     legend('Desired','Sumulated','location','southeast')
-%     xlabel('Time'); ylabel('Position');
-%     % Parameter Estimate
-%     subplot(412)
-%     plot(t,s)
-%     title('s-dynamics')
-%     xlabel('Time'); ylabel('s');
-% end
