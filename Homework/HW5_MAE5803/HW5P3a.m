@@ -2,7 +2,7 @@
 function HW5P3a()
 
 m1 = 1; l1 = 1; me = 2; de = pi/6; I1 = 0.12; lc1 = .5; Ie = .25; lce = .6;
-% qd = [pi/3; pi/2];
+% qd = [pi/3; pi/2]; % example 9.1
 qd = [1; 2];
 
 a(1) = I1 + m1*lc1^2 + Ie + me*lce^2 + me*l1^2;

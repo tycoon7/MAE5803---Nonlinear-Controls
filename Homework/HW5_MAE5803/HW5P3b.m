@@ -21,7 +21,7 @@ P{2} = 200*P{1};
 P{3} = 0.1*P{1};
 
 % Initial Conditions
-tspan = [0 1];
+tspan = [0 3];
 X0 = [0,0,0,0,0,0,0,0];
 
 for i1 = 1:length(caseFlag)
@@ -32,7 +32,7 @@ for i2 = 1:length(T{i1})
 end
 
 fh = figure(i1);
-set(fh,'Position',[0 0 799 789])
+set(fh,'Position',[0 10 799 1079])
 suptitle(['HW5 Problem #3b  qd' num2str(caseFlag(i1,1)) '  P' num2str(caseFlag(i1,2))])
 subplot(221)
 plot(T{i1},rad2deg(q_err{i1}(1,:)))
@@ -48,6 +48,14 @@ plot(T{i1},tau{i1}(1,:))
 ylabel('Control Torque 1'); xlabel('Time (s)')
 figureName = ['HW5P3b_qd' num2str(caseFlag(i1,1)) '_P' num2str(caseFlag(i1,2))];
 print(['HW5P3b_pdfs\' figureName],'-dpdf','-fillpage')
+
+fh2 = figure(i1+length(caseFlag));
+set(fh2,'Position',[800 10 799 1079])
+plot(T{i1},X{i1}(:,5:8));
+legend('a1','a2','a3','a4'); xlabel('Time');
+title(['aPlot HW5 Problem #3b  qd' num2str(caseFlag(i1,1)) '  P' num2str(caseFlag(i1,2))])
+figureName2 = ['aPlot_HW5P3b_qd' num2str(caseFlag(i1,1)) '_P' num2str(caseFlag(i1,2))];
+print(['HW5P3b_pdfs\' figureName2],'-dpdf','-fillpage')
 end
 end
 %%
@@ -70,7 +78,9 @@ switch qFlag
         qd_dd = [4*pi^2*cos(2*pi*t); 8*pi^2*cos(2*pi*t)];
 end
 P = Ps{pFlag};
-
+% I would like to use one of the triplets below so I don't have to use
+% qFlag and I can just pass in an anonymous function for qd, but it takes
+% too long to evaluate an anonymous function each time...
 % qd    = eval(qd_fun(t));
 % qd_d  = eval(subs(diff(qd_fun,1),t));
 % qd_dd = eval(subs(diff(qd_fun,2),t));
