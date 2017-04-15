@@ -3,10 +3,9 @@ clear; close all; clc;
 % Given?
 g = 9.81;               % (m/s^2) gravitational constant
 m = 1000;                % (kg) vehicle mass
-R = 0.5;               % (m) wheel radius
-J = (9/10)*(m*R^2/2);            % (kg-m^2) wheel rotational inertia
-% nu = m*R^2/J;           % (-) inertia ratio
-nu = 15;
+R = 0.25;               % (m) wheel radius
+J = (/10)*(m*R^2/2);            % (kg-m^2) wheel rotational inertia
+nu = m*R^2/J;           % (-) inertia ratio
 
 % Best guess for c. These are unknown, but bounded for dynamics simulation
 c = [1.18 10 0.5];      % (-) friction coefficient parameters
@@ -34,7 +33,6 @@ axis([0 20 0 20])
 xlabel('u')
 ylabel('wR')
 title('Nonlinear system phase portrait')
-ax = gca; ax.YAxisLocation= 'Right';
 hold off
 
 % %% Plot the field of the phase portrait

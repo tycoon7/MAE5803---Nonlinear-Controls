@@ -9,8 +9,9 @@ s = (u-wR)/u;      % wheel slip for braking conditions (u>=omega*R)
 mu = c(1)*(1-exp(-c(2)*s)) - c(3)*s;
 
 % braking torque (simple proportional control)
-kb = 0.0125*u; % braking gain on the momentum of the car
-T_b = kb*u;
+% kb = 0.0125*u; % braking gain on the momentum of the car
+% T_b = kb*u;
+T_b = 12;
 
 % H what's it called?
 H = nu*mu - T_b;
