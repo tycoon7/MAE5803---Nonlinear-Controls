@@ -58,24 +58,22 @@ xlabel('x'); ylabel('dV/dt');
 %
 % $$ \dot{x} = (5-x)^5 $$
 %
-% This system has an equilibrium point at $x=5$. It is an unstable node as
-% evidenced by using the candidate Lyapunov function to show violation of
-% Theorem 3.2. Clearly, $\dot{V}(x)$ is not negative semidefinite.
+% This system has an equilibrium point at $x=5$. Perform a change of
+% variables to find stability about the equilibrium point
+%
+% $$ y = 5 - x $$
+%
+% $$ \dot{y} = -y^5 $$
 %
 % The Lyapunov function is:
 %
-% $$ V = x^2 $$
+% $$ V = y^2 $$
 %
-% $$ \dot{V}(x) = 2x\dot{x} = 2x(5-x)^5 $$
-
-figure()
-ezplot('(5-x)^5')
-xlabel('x'); ylabel('dx/dt');
-figure()
-ezplot('2*x*(5-x)^5')
-axis([-10 10 -1000 1000])
-xlabel('x'); ylabel('dV/dt');
-
+% $$ \dot{V}(y) = 2y\dot{y} = -2yy^5 = -2y^6 $$
+%
+% Using Theorem 3.3 as before, the equilbrium point is found to be globally
+% asymptotically stable
+%
 
 %% Eqn #3:
 %
@@ -87,7 +85,7 @@ xlabel('x'); ylabel('dV/dt');
 %
 % The Lyapunov function is:
 %
-% $$ V(\mathbf{x}) = \frac{1}{2}\dot{x}+\int_0^x k(\xi)d\xi $$
+% $$ V(\mathbf{x}) = \frac{1}{2}\dot{x}^2+\int_0^x k(\xi)d\xi $$
 %
 % $$
 % \begin{array}{cl}
@@ -101,17 +99,22 @@ xlabel('x'); ylabel('dV/dt');
 % From Theorem 3.3:
 %
 % # $V(\mathbf{x})$ is positive definite. The first term is squared and the
-% second is positive by analogy of stored energy in a displaced spring no
-% matter what direction the displacement.
-% # $\dot{V}(\mathbf{x})$ is negative semidefinite as evidenced by the
-% above simplification.
-% # $V(\mathbf{x})$ is radially unbounded. More speed means more energy and
-% more spring displacement means more energy.
+% second is found to be positive (except at zero) by integrating in MATLAB.
+% # $\dot{V}(\mathbf{x})$ is negative definite according to definition 3.7
+%  and the above simplification, $\dot{V}(\mathbf{x})=-\dot{x}^6$.
+% # $V(\mathbf{x})$ is radially unbounded. Both terms increase
+% monotonically.
 %
 % The origin is a globally asymptotically stable equilibrium point and is
 % the only equilibrium point.
 %
 HW2P2_plotPhasePortrait(3,[0 10],[-1 1],[-1 1],'System \#3')
+
+figure()
+syms x
+k = x^7 - x^2*sin(x)^8*cos(3*x)^2;
+ezplot(int(k))
+title('Eqn #3, Integral of k(x)')
 
 %% Eqn #4:
 %
@@ -136,17 +139,22 @@ HW2P2_plotPhasePortrait(3,[0 10],[-1 1],[-1 1],'System \#3')
 % From Theorem 3.3:
 %
 % # $V(\mathbf{x})$ is positive definite. The first term is squared and the
-% second is positive by analogy of stored energy in a displaced spring no
-% matter what direction the displacement.
-% # $\dot{V}(\mathbf{x})$ is negative semidefinite as evidenced by the
-% above simplification.
-% # $V(\mathbf{x})$ is radially unbounded. More speed means more energy and
-% more spring displacement means more energy.
+% second is found to be positive (except at zero) by integrating in MATLAB.
+% # $\dot{V}(\mathbf{x})$ is negative definite according to definition 3.7
+% and the above simplification, $\dot{V}(\mathbf{x})=-\dot{x}^6$.
+% # $V(\mathbf{x})$ is radially unbounded. Both terms increase
+% monotonically.
 %
 % The origin is a globally asymptotically stable equilibrium point and is
 % the only equilibrium point.
 %
 HW2P2_plotPhasePortrait(4,[0 20],[-2 2],[-2 2],'System \#4')
+
+figure()
+syms x
+k = x^5 - x^3*sin(x)^3;
+ezplot(int(k))
+title('Eqn #4, Integral of k(x)')
 
 %% Eqn #5:
 %
@@ -158,7 +166,7 @@ HW2P2_plotPhasePortrait(4,[0 20],[-2 2],[-2 2],'System \#4')
 %
 % The Lyapunov function is:
 %
-% $$ V(\mathbf{x}) = \frac{1}{2}\dot{x}+\int_0^x k(\xi)d\xi $$
+% $$ V(\mathbf{x}) = \frac{1}{2}\dot{x}^2+\int_0^x k(\xi)d\xi $$
 %
 % $$
 % \begin{array}{cl}
@@ -189,3 +197,15 @@ HW2P2_plotPhasePortrait(4,[0 20],[-2 2],[-2 2],'System \#4')
 % points (0,0), (-1.4483,0), and (1.4483,0).
 %
 HW2P2_plotPhasePortrait(5,[0 10],[-2 2],[-2 2],'System \#5')
+
+figure()
+syms x
+k = x - sin(pi*x/2);
+ezplot(int(k))
+title('Eqn #5, Integral of k(x)')
+
+figure()
+syms x
+y = x^2-2*x+1;
+ezplot(y)
+

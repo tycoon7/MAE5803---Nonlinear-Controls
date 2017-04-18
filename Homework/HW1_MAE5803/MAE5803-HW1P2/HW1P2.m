@@ -50,8 +50,8 @@ eValue1 = eig([-2 0; 0 -1])
 
 %% Second Singular Point
 % The second singular point is a saddle point at (-1,0). Use the
-% Jacobian to linearize about this point. Both eigenvalues have negative
-% real parts, supporting the ID as a stable focus.
+% Jacobian to linearize about this point. There is one positive and one
+% negative eigenvalue supporting the identification as a saddle point.
 %
 % $$ A_2 = \left.\frac{\partial{\bar{f}}}{\partial{\bar{x}}}\right\vert_{\bar{x}=(-1,0)} $$
 %
