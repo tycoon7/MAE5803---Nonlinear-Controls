@@ -2,10 +2,11 @@
 clear; close all; clc;
 % Given?
 g = 9.81;               % (m/s^2) gravitational constant
-m = 100;                % (kg) vehicle mass
-R = 0.25;               % (m) wheel radius
-J = m*R^2/2;            % (kg-m^2) wheel rotational inertia
-nu = m*R^2/J;           % (-) inertia ratio
+% m = 100;                % (kg) vehicle mass
+% R = 0.25;               % (m) wheel radius
+% J = m*R^2/2;            % (kg-m^2) wheel rotational inertia
+% nu = m*R^2/J;           % (-) inertia ratio
+nu = 15;
 
 % Best guess for c. These are unknown, but bounded for dynamics simulation
 c = [1.18 10 0.5];      % (-) friction coefficient parameters
@@ -30,9 +31,9 @@ for i = 1:length(t)
 end
 
 figure(1)
-subplot(131)
+subplot(211)
 plot(t,u)
 title('vehicle speed')
 xlabel('time')
-subplot(132)
+subplot(212)
 plot(u,wR)
