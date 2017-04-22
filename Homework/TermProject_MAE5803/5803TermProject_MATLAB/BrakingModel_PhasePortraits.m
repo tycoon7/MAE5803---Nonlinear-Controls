@@ -57,31 +57,41 @@ wR_d = @(u_d) u_d*(1-s_d);
 fplot(wR_d,[0 20],'linewidth',2.5)
 axis([0 20 0 20])
 % axis equal
-xlabel('u')
-ylabel('wR')
-title('Nonlinear system phase portrait')
+xlabel('$u$')
+ylabel('$\omega$R')
+% title('Nonlinear system phase portrait')
 ax = gca; ax.YAxisLocation= 'Right';
 hold off
 
 %% Plot wheel slip over time
 figure()
-subplot(211)
+subplot(311)
 hold on
 % for i3 = 1:5:length(s)
 for i3 = 55:1:65
     plot(t{i3},s{i3})
 end
 hold off
-xlabel('Time'); ylabel('s');
+xlabel('Time'); ylabel('$s$');
 axis([0 5 0 1])
 
 % vehicle velocity over time
-subplot(212)
+subplot(312)
 hold on
 % for i4 = 1:5:length(s)
 for i4 = 55:1:65
     plot(t{i4},u{i4})
 end
 hold off
-xlabel('Time'); ylabel('u');
+xlabel('Time'); ylabel('$u$');
+axis([0 5 0 20])
+
+% control input
+subplot(313)
+hold on
+for i5 = 65
+    plot(t{i5},Y_b{i5})
+end
+hold off
+xlabel('Time'); ylabel('$Y_b$');
 axis([0 5 0 20])
