@@ -48,7 +48,7 @@ for i1 = 1:length(X0)
     u{i1} = X{i1}(:,1);
     wR{i1} = X{i1}(:,2);
     for i2 = 1:length(t{i1})
-        [~,s{i1}(i2),Y_b{i1}(i2)] = EOM_qCarNL_robust(t{i1}(i2),X{i1}(i2,:),g,c,nu,s_d,mu_d,X0(i1,1));
+        [~,s{i1}(i2)] = EOM_qCarNL_robust(t{i1}(i2),X{i1}(i2,:)',g,c,nu,s_d,mu_d,X0(i1,1));
     end
         plot(u{i1},wR{i1})
 end
@@ -87,11 +87,11 @@ xlabel('Time'); ylabel('$u$');
 axis([0 5 0 20])
 
 % control input
-subplot(313)
-hold on
-for i5 = 65
-    plot(t{i5},Y_b{i5})
-end
-hold off
-xlabel('Time'); ylabel('$Y_b$');
-axis([0 5 0 20])
+% subplot(313)
+% hold on
+% for i5 = 65
+%     plot(t{i5},Y_b{i5})
+% end
+% hold off
+% xlabel('Time'); ylabel('$Y_b$');
+% axis([0 5 0 20])

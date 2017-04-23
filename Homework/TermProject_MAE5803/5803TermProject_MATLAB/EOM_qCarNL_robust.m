@@ -1,4 +1,4 @@
-function [dx,s,Y_b] = EOM_qCarNL_robust(t,x,g,c,nu,s_d,mu_d,u_0)
+function [dx,s] = EOM_qCarNL_robust(t,x,g,c,nu,s_d,mu_d,u_0)
 dx = zeros(size(x));
 u = x(1);
 wR = x(2);
@@ -34,8 +34,10 @@ u = -mu_d*g*t + u_0;
 xd = [u; (1-s_d)*u];
 xd_d = [-mu_d*g; g*(nu*mu_d-Y_bd)];
 xi = x-xd;
+U_hat = - f_hat + xd_d;
+U = U_hat - (F+1)*sign(s-s_d);
 
-dx = f - f_hat + xd_d - (F+1)*sign(s-s_d);
+dx = f + U;
 
 % if Y_b < 0
 %     Y_b = 0;
