@@ -27,20 +27,20 @@ mu = c(1)*(1-exp(-c(2)*s)) - c(3)*s;
 
 % braking torque constant value chosen to yield desired slip value found by
 % setting h_b = 0 and solving for Y_b with s_d
-Y_b = mu_d*(1+nu-s_d);
+% Y_b = mu_d*(1+nu-s_d);
 
 % braking torque (simple proportional control)
-% kp = 1.2;       % braking gain on the angular velocity of the wheel
-% Y_b = kp*wR;    % braking torque (dimensionless) proportional to wheel speed
+kp = 1.2;       % braking gain on the angular velocity of the wheel
+Y_b = kp*wR;    % braking torque (dimensionless) proportional to wheel speed
 
 % switching control
 % ks = 7;
 % Y_b = Y_b - ks*sign(s-s_d); % add a compensator to drive to s = s_d
 
 % sliding control
-% sat = @(x,delta) min(max(x/delta,-1),1);
-% phi = .05;
-% Y_b = Y_b - 5*sat(s-s_d,phi);
+sat = @(x,delta) min(max(x/delta,-1),1);
+phi = .05;
+Y_b = Y_b - 5*sat(s-s_d,phi);
 % 
 % if Y_b < 0
 %     Y_b = 0;

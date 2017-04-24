@@ -27,12 +27,14 @@ Y_bd = mu_d*(1+nu-s_d);
 % robust controller
 th = 0.9;
 th_hat = 1;
-F = [0; 0.2];
+th_range = [0.8 1.2];
+F = [0; abs(th_range(1)-th_hat)*g*mu*(s-1-nu)/u];
+eta = [0; 1];
 f = [-th*mu*g; nu*th*g];
 f_hat = [abs(th_hat-th)*mu*g+1; abs(th_hat-th)*mu*g+1];
 u = -mu_d*g*t + u_0;
 xd = [u; (1-s_d)*u];
-xd_d = [-mu_d*g; g*(nu*mu_d-Y_bd)];
+xd_d = [-mu_d*g*t; g*(nu*mu_d-Y_bd)];
 xi = x-xd;
 U_hat = - f_hat + xd_d;
 U = U_hat - (F+1)*sign(s-s_d);
