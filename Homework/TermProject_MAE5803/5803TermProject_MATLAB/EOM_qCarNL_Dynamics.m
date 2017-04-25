@@ -34,8 +34,8 @@ kp = 1.2;       % braking gain on the angular velocity of the wheel
 Y_b = kp*wR;    % braking torque (dimensionless) proportional to wheel speed
 
 % switching control
-% ks = 7;
-% Y_b = Y_b - ks*sign(s-s_d); % add a compensator to drive to s = s_d
+ks = 7;
+Y_b = Y_b - ks*sign(s-s_d); % add a compensator to drive to s = s_d
 
 % sliding control
 sat = @(x,delta) min(max(x/delta,-1),1);
