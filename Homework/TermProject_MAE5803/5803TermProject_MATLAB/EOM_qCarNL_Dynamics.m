@@ -3,7 +3,7 @@ dx = zeros(size(x));
 u = x(1);
 wR = x(2);
 
-if u <= eps
+if u <= eps || isnan(u)
    u_dot = 0;
    wR_dot = 0;
    s = 0;
@@ -14,6 +14,7 @@ else
 if wR < 0
 wR = 0;
 end
+
 
 % wheel slip for braking conditions (u>=omega*R)
 s = (u-wR)/u;
@@ -30,21 +31,21 @@ mu = c(1)*(1-exp(-c(2)*s)) - c(3)*s;
 % Y_b = mu_d*(1+nu-s_d);
 
 % braking torque (simple proportional control)
-kp = 1.2;       % braking gain on the angular velocity of the wheel
-Y_b = kp*wR;    % braking torque (dimensionless) proportional to wheel speed
+% kp = 0;       % braking gain on the angular velocity of the wheel
+% Y_b = kp*wR;    % braking torque (dimensionless) proportional to wheel speed
 
 % switching control
-ks = 7;
-Y_b = Y_b - ks*sign(s-s_d); % add a compensator to drive to s = s_d
+ks = 20;
+% Y_b = -ks*sign(s-s_d); % add a compensator to drive to s = s_d
 
 % sliding control
 sat = @(x,delta) min(max(x/delta,-1),1);
 phi = .05;
-Y_b = Y_b - 5*sat(s-s_d,phi);
-% 
-% if Y_b < 0
-%     Y_b = 0;
-% end
+Y_b = - ks*sat(s-s_d,phi);
+
+if Y_b < 0
+    Y_b = 0;
+end
 
 % H what's it called?
 H = nu*mu - Y_b;

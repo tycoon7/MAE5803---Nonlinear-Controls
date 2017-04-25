@@ -29,7 +29,7 @@ mu_d = abs(mu_d);
 %% Plot phase portrait
 figure()
 hold on
-tspan = [0 5];
+tspan = [0 4];
 % u0 = 20;
 u0 = 0:2:20;        % initial speed
 wR0 = 0:2:20;       % initial wR
@@ -38,12 +38,7 @@ M1t = triu(M1); M2t = triu(M2);
 A = cat(2,M1t,M2t);
 X0 = reshape(A,[],2);
 X0(find(~sum(X0,2)),:) = [];
-% X0 = [20,20];
-% for i1 = 1:length(wR0)
 for i1 = 1:length(X0)
-% for i1 = 10
-%     X0{i1} = [u0; wR0(i1)];
-%     [t{i1},X{i1}] = ode45(@EOM_qCarNL_Dynamics,tspan,X0{i1},[],g,c,nu,s_d,mu_d);
     [t{i1},X{i1}] = ode45(@EOM_qCarNL_Dynamics,tspan,X0(i1,:)',[],g,c,nu,s_d,mu_d);
     u{i1} = X{i1}(:,1);
     wR{i1} = X{i1}(:,2);
@@ -58,40 +53,52 @@ fplot(wR_d,[0 20],'linewidth',2.5)
 axis([0 20 0 20])
 % axis equal
 xlabel('$u$')
-ylabel('$\omega$R')
+ylabel('${\omega}R$')
 % title('Nonlinear system phase portrait')
 ax = gca; ax.YAxisLocation= 'Right';
 hold off
 
 %% Plot wheel slip over time
 figure()
-subplot(311)
+subplot(411)
 hold on
 % for i3 = 1:5:length(s)
-for i3 = 55:1:65
+for i3 = 65
     plot(t{i3},s{i3})
 end
 hold off
 xlabel('Time'); ylabel('$s$');
-axis([0 5 0 1])
+xlim(tspan); ylim([0 1]);
 
 % vehicle velocity over time
-subplot(312)
+subplot(412)
 hold on
 % for i4 = 1:5:length(s)
-for i4 = 55:1:65
+for i4 = 65
     plot(t{i4},u{i4})
 end
 hold off
 xlabel('Time'); ylabel('$u$');
-axis([0 5 0 20])
+xlim(tspan); ylim([0 20]);
+
+% wheel velocity over time
+subplot(413)
+hold on
+% for i4 = 1:5:length(s)
+for i4 = 65
+    plot(t{i4},wR{i4})
+end
+hold off
+xlabel('Time'); ylabel('${\omega}R$');
+xlim(tspan); ylim([0 20]);
 
 % control input
-subplot(313)
+subplot(414)
 hold on
 for i5 = 65
     plot(t{i5},Y_b{i5})
 end
 hold off
 xlabel('Time'); ylabel('$Y_b$');
-axis([0 5 0 20])
+Y_bmax = max(Y_b{i5});
+xlim(tspan); ylim([0 Y_bmax]);
