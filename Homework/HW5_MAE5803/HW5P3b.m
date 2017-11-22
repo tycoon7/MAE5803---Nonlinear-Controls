@@ -44,8 +44,8 @@ subplot(223)
 plot(T{i1},tau{i1}(1,:))
 ylabel('Control Torque 1'); xlabel('Time (s)')
 subplot(224)
-plot(T{i1},tau{i1}(1,:))
-ylabel('Control Torque 1'); xlabel('Time (s)')
+plot(T{i1},tau{i1}(2,:))
+ylabel('Control Torque 2'); xlabel('Time (s)')
 figureName = ['HW5P3b_qd' num2str(caseFlag(i1,1)) '_P' num2str(caseFlag(i1,2))];
 print(['HW5P3b_pdfs\' figureName],'-dpdf','-fillpage')
 

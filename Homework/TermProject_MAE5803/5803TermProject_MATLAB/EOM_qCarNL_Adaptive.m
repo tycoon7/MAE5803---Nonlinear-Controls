@@ -1,5 +1,5 @@
-function [dx,wR] = EOM_qCarNL_Adaptive(t,x,g,c,nu,s_d,mu_d,v_0)
-dx = zeros(size(x_d));
+function [dx,wR,tau] = EOM_qCarNL_Adaptive(t,x,g,c,nu,s_d,mu_d,v_0)
+dx = zeros(size(x));
 v = x(1);
 s = x(2);
 q_d = [v; s];
@@ -23,7 +23,7 @@ Kd = 100*eye(2);
 % adaptive controller
 qd_d = [-a_hat*mu_d*g*t+v_0; s_d];
 qd_dd = [-a_hat*mu_d*g; 0];
-q_err = 0;
+q_err = [0; 0];
 q_err_d = q_d - qd_d;
 qr_d = qd_d - Lambda*q_err;
 qr_dd = qd_dd - Lambda*q_err_d;
@@ -34,6 +34,7 @@ Y = [mu*qr_d(1); mu*(nu+1)*qr_d(1)-mu*qr_d(2)];
 
 xi = q_err_d + Lambda*q_err;
 tau = H*qr_dd - Y*a_hat - Kd*xi;
+% tau(1) = 0;
 wR = (1-s)*v;
 
 q_dd = inv(H)*(tau - C*q_d);

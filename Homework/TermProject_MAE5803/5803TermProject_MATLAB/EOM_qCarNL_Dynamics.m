@@ -1,4 +1,4 @@
-function [dx,s,H,Y_b] = EOM_qCarNL_Dynamics(t,x,g,c,nu,s_d,mu_d)
+function [dx,s,H,Y_b] = EOM_qCarNL_Dynamics(t,x,g,c,nu,s_d)
 dx = zeros(size(x));
 u = x(1);
 wR = x(2);
